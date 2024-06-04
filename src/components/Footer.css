@@ -1,0 +1,41 @@
+.list-your-show {
+    text-align: left;
+    padding: 20px 0;
+  }
+  
+  .list-your-show .contact-button {
+    background-color: #ff4081;
+    color: white;
+    margin-top: 10px;
+  }
+  
+  .footer-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footer-item .MuiSvgIcon-root {
+    font-size: 40px;
+    margin-bottom: 8px;
+  }
+  
+  .footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+  }
+  
+  .footer-icons .MuiSvgIcon-root {
+    font-size: 32px;
+  }
+  
+  .footer-copyright {
+    margin-top: 20px;
+    font-size: 12px;
+  }
+  

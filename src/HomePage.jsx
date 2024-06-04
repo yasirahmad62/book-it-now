@@ -43,7 +43,7 @@ const movies = [
   // Add more movie objects as needed
 ];
 
-function App() {
+function HomePage() {
   return (
     <div>
       <Header />
@@ -56,4 +56,4 @@ function App() {
   );
 }
 
-export default App;
+export default HomePage;

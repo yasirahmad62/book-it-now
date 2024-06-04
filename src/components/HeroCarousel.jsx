@@ -43,7 +43,7 @@ const HeroCarousel = ({ movies }) => {
 
   return (
     <div className="carousel-container">
-      <h2>Recommended Movies <a href="#" className="see-all">See All</a></h2>
+      <h2>Recommended Movies <a href="/events" className="see-all">See All</a></h2>
       <Slider {...settings}>
         {movies.map((movie, index) => (
           <div key={index} className="movie-card">

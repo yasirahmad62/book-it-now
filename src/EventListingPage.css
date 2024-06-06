@@ -4,62 +4,67 @@
     max-width: 1200px;
     margin: 0 auto;
     font-family: Arial, sans-serif;
-}
-
-.event-listing-page h1 {
+  }
+  
+  .event-listing-page h1 {
     text-align: center;
     margin-bottom: 20px;
     font-size: 2.5em;
     color: #333;
-}
-
-.events-container {
+  }
+  
+  .events-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-}
-
-.event-card {
+    justify-content: center;
+  }
+  
+  .event-card {
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    flex: 1 1 calc(33.333% - 40px);
+    width: 200px;
     box-sizing: border-box;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.event-card:hover {
+    text-align: center;
+  }
+  
+  .event-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.event-card h2 {
-    font-size: 1.5em;
-    color: #007BFF;
+  }
+  
+  .event-card .event-image {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
     margin-bottom: 10px;
-}
-
-.event-card p {
-    margin: 5px 0;
-    color: #555;
-}
-
-.event-card p strong {
-    color: #333;
-}
-
-.book-button {
-    background-color: #da5454;
+  }
+  
+  .event-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .event-details {
+    margin-bottom: 10px;
+  }
+  
+  .book-button {
+    background-color: #007BFF;
     color: white;
     border: none;
     border-radius: 4px;
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.book-button:hover {
+  }
+  
+  .book-button:hover {
     background-color: #0056b3;
-}
+  }
+  

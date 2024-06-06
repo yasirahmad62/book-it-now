@@ -1,4 +1,3 @@
-// src/EventListingPage.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from "./components/header.jsx";
@@ -27,7 +26,7 @@ const EventListingPage = () => {
     <div>
       <Header />
       <div className="event-listing-page">
-        <h1>Upcoming Events in Mumbai</h1>
+        <h1>Upcoming Events in Toronto</h1>
         <div className="events-container">
           {events.map(event => (
             <div className="event-card" key={event.id}>

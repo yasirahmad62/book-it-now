@@ -40,7 +40,7 @@ export default function AuthModal({ open, handleClose }) {
             handleClose();
         } catch (error) {
             console.error(error);
-            // Optionally, show an error message if login fails
+           
         }
     };
 
@@ -51,11 +51,11 @@ export default function AuthModal({ open, handleClose }) {
             handleClose();
         } catch (error) {
             if (error.code === 'auth/email-already-in-use') {
-                // If email is already in use, log the user in
+               
                 handleEmailSignIn();
             } else {
                 console.error(error);
-                // Optionally, show an error message if signup fails
+                
             }
         }
     };
@@ -69,7 +69,7 @@ export default function AuthModal({ open, handleClose }) {
                 <Typography variant="h6" component="h2" className="modal-title">
                     Get Started
                 </Typography>
-                <Button onClick={handleGoogleSignIn} fullWidth variant="outlined" className="modal-button" startIcon={<img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google" />}>
+                <Button onClick={handleGoogleSignIn} fullWidth  className="modal-button" startIcon={<img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google" />}>
                     Continue with Google
                 </Button>
                 <TextField
@@ -91,7 +91,7 @@ export default function AuthModal({ open, handleClose }) {
                     onChange={(e) => setPassword(e.target.value)}
                     className="modal-textfield"
                 />
-                <Button onClick={handleEmailSignUp} fullWidth variant="contained" color="primary" className="modal-button">
+                <Button onClick={handleEmailSignUp} className="modal-button">
                     Sign Up with Email
                 </Button>
                 <Typography variant="body2" className="terms-privacy">

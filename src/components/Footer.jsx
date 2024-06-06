@@ -27,29 +27,34 @@ const Footer = () => {
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <Box className="list-your-show">
-              <Typography>List your Show</Typography>
-              <Typography>Got a show, event, activity or a great experience? Partner with us & get listed on BookItNow</Typography>
+              <Typography variant="h6" noWrap component="div" fontFamily="Work Sans">List your Show</Typography>
+              <Typography fontFamily="Work Sans">Got a show, event, activity or a great experience? Partner with us & get listed on BookItNow</Typography>
               <Button variant="contained" className="contact-button">
                 Contact today!
               </Button>
             </Box>
           </Grid>
+          <Grid item xs={12} className="logo-container">
+            <div className="logo-frame">
+              <img src="logobg.png" alt="Logo" className="logo-image" />
+            </div>
+          </Grid>
           <Grid item xs={4}>
             <Box className="footer-item">
               <CustomerServiceIcon />
-              <Typography>24/7 CUSTOMER CARE</Typography>
+              <Typography fontFamily="Work Sans">24/7 CUSTOMER CARE</Typography>
             </Box>
           </Grid>
           <Grid item xs={4}>
             <Box className="footer-item">
               <ConfirmationNumberIcon />
-              <Typography>RESEND BOOKING CONFIRMATION</Typography>
+              <Typography fontFamily="Work Sans">RESEND BOOKING CONFIRMATION</Typography>
             </Box>
           </Grid>
           <Grid item xs={4}>
             <Box className="footer-item">
               <EmailIcon />
-              <Typography>SUBSCRIBE TO THE NEWSLETTER</Typography>
+              <Typography fontFamily="Work Sans">SUBSCRIBE TO THE NEWSLETTER</Typography>
             </Box>
           </Grid>
           <Grid item xs={12}>
@@ -63,7 +68,7 @@ const Footer = () => {
             </Box>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="body2" color="inherit" className="footer-copyright">
+            <Typography variant="body2" color="inherit" className="footer-copyright" fontFamily="Work Sans">
               Copyright 2024 © SmallWorld Entertainment Pvt. Ltd. All Rights Reserved.
             </Typography>
           </Grid>

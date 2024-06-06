@@ -5,21 +5,20 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
-import { styled, alpha } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import AuthModal from './AuthModal';
 import { auth } from '../firebase';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import './header.css';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    '&:hover': {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
+    backgroundColor: "#f2f2f2",
+    fontFamily: "Work Sans",
     marginRight: theme.spacing(2),
     marginLeft: 0,
     width: '100%',
@@ -37,14 +36,17 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    fontFamily: "Work Sans",
+    color: '#757575',
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: 'inherit',
+    color: '#000000',
     '& .MuiInputBase-input': {
         padding: theme.spacing(1, 1, 1, 0),
         paddingLeft: `calc(1em + ${theme.spacing(4)})`,
         transition: theme.transitions.create('width'),
+        fontFamily: "Work Sans",
         width: '100%',
         [theme.breakpoints.up('md')]: {
             width: '20ch',
@@ -85,51 +87,65 @@ function Header() {
     };
 
     return (
-        <AppBar position="static" style={{ backgroundColor: '#000' }}>
-            <Toolbar>
-                <Typography variant="h6" noWrap component="div" sx={{ display: { xs: 'none', sm: 'block' } }}>
-                    <img src="logobg.png" alt="Logo" style={{ height: '30px' }} />
-                </Typography>
-                <Search>
-                    <SearchIconWrapper>
-                        <SearchIcon />
-                    </SearchIconWrapper>
-                    <StyledInputBase
-                        placeholder="Search for Movies, Events, Plays, Sports and Activities"
-                        inputProps={{ 'aria-label': 'search' }}
-                    />
-                </Search>
-                <div style={{ flexGrow: 1 }}></div>
-                <Typography variant="h6" noWrap component="div" sx={{ display: { xs: 'none', sm: 'block' }, marginRight: 2, color: "#fff" }}>
-                    Toronto
-                </Typography>
-                {user ? (
-                    <>
-                        <IconButton color="inherit" onClick={handleMenu}>
-                            <AccountCircleIcon />
-                        </IconButton>
-                        <Menu
-                            anchorEl={anchorEl}
-                            open={openMenu}
-                            onClose={handleMenuClose}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                        >
-                            <MenuItem onClick={handleMenuClose}>User Profile</MenuItem>
-                            <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                        </Menu>
-                    </>
-                ) : (
-                    <Button variant="contained" color="secondary" style={{ marginRight: '10px', background: "#ff4081" }} onClick={handleOpen}>
-                        Sign In
-                    </Button>
-                )}
+        <AppBar position="static" className="header-appbar">
+            <Toolbar className="header-toolbar">
+                <div className="header-logo">
+                    <Typography variant="h2" noWrap component="div">
+                        <img src="logobg.png" alt="Logo" />
+                    </Typography>
+                </div>
+                <div className="header-search">
+                    <Search className="search">
+                        <SearchIconWrapper className="search-icon-wrapper">
+                            <SearchIcon />
+                        </SearchIconWrapper>
+                        <StyledInputBase
+                            placeholder="Search for Movies, Events, Plays, Sports and Activities"
+                            inputProps={{ 'aria-label': 'search' }}
+                            className="styled-input-base"
+                        />
+                    </Search>
+                </div>
+                <div className="headerRightSection">
+                    <div className="header-location">
+                        <Typography variant="h6" noWrap component="div" fontFamily={"Work Sans"}>
+                            Toronto
+                        </Typography>
+                    </div>
+                    <div className="header-actions">
+                        {user ? (
+                            <>
+                                <IconButton color="inherit" onClick={handleMenu}>
+                                    <AccountCircleIcon className="header-menu-icon" />
+                                </IconButton>
+                                <Menu
+                                    anchorEl={anchorEl}
+                                    open={openMenu}
+                                    onClose={handleMenuClose}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                >
+                                    <MenuItem onClick={handleMenuClose}>User Profile</MenuItem>
+                                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                                </Menu>
+                            </>
+                        ) : (
+                            <Button
+                                variant="contained"
+                                className="header-signin-button"
+                                onClick={handleOpen}
+                            >
+                                Sign In
+                            </Button>
+                        )}
+                    </div>
+                </div>
             </Toolbar>
             <AuthModal open={open} handleClose={handleClose} />
         </AppBar>

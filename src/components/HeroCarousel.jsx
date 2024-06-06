@@ -4,14 +4,14 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './HeroCarousel.css';
 
-const HeroCarousel = ({ movies }) => {
+const HeroCarousel = ({ sections, subHeading, title }) => {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 6,
     slidesToScroll: 1,
-    nextArrow: <SampleNextArrow  />,
+    nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
       {
@@ -20,7 +20,7 @@ const HeroCarousel = ({ movies }) => {
           slidesToShow: 3,
           slidesToScroll: 1,
           infinite: true,
-          dots: true
+          dots: false
         }
       },
       {
@@ -42,22 +42,24 @@ const HeroCarousel = ({ movies }) => {
   };
 
   return (
-    <div className="carousel-container">
-      <h2>Recommended Movies <a href="/events" className="see-all">See All</a></h2>
-      <Slider {...settings}>
-        {movies.map((movie, index) => (
-          <div key={index} className="movie-card">
-            <img src={movie.image} alt={movie.title} className="movie-image" />
-            <div className="movie-info">
-              <div className="movie-rating">
-                <span className="star">★</span> {movie.rating} <span className="votes"> {movie.votes} Votes</span>
+    <div>
+      {sections.map((section, idx) => (
+        <div key={idx} className="carousel-container">
+          <h2>{title} <a href={"/events"} className="see-all">See All</a></h2>
+          <p>{subHeading}</p>
+          <Slider {...settings}>
+            {section.items.map((item, index) => (
+              <div key={index} className="movie-card">
+                <img src={item.image} alt={item.title} className="movie-image" />
+                <div className="movie-info">
+                  <h3 className="movie-title">{item.title}</h3>
+                  <p className="movie-genre">{item.genre}</p>
+                </div>
               </div>
-              <h3 className="movie-title">{movie.title}</h3>
-              <p className="movie-genre">{movie.genre}</p>
-            </div>
-          </div>
-        ))}
-      </Slider>
+            ))}
+          </Slider>
+        </div>
+      ))}
     </div>
   );
 };
@@ -67,7 +69,7 @@ const SampleNextArrow = (props) => {
   return (
     <div
       className={className}
-      style={{ ...style, display: 'block', background: 'black', borderRadius: '50%' }}
+      style={{ ...style, display: 'block', background: 'white' }}
       onClick={onClick}
     />
   );
@@ -78,7 +80,7 @@ const SamplePrevArrow = (props) => {
   return (
     <div
       className={className}
-      style={{ ...style, display: 'block', background: 'black', borderRadius: '50%' }}
+      style={{ ...style, display: 'block'}}
       onClick={onClick}
     />
   );

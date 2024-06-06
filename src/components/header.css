@@ -1,0 +1,78 @@
+
+.header-appbar {
+    background-color: #ffffff !important;
+    color: #000000;
+    box-shadow: none;
+    border-bottom: 1px solid #e0e0e0 !important;
+    padding: 0 16px;
+}
+
+.header-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    min-height: 64px;
+}
+
+.header-logo img {
+    height: 60px;
+    margin-top: 20px;
+}
+
+.header-search {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    margin-left: 16px;
+    max-width: 500px;
+}
+
+.search {
+    position: relative;
+    border-radius: 24px;
+    width: 100%;
+    background-color: #f2f2f2;
+}
+
+.styled-input-base {
+    color: #000000;
+    font-family: "Work Sans", sans-serif;
+    width: 100%;
+    padding: 8px 8px 8px calc(1em + 32px);
+    font-size: 0.875rem;
+    transition: width 300ms;
+}
+
+.header-location {
+    margin-right: 16px;
+    color: #000000;
+    display: flex;
+    align-items: center;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+}
+
+.header-signin-button {
+    background-color: rgb(220, 53, 75) !important;
+    font-family: "Work Sans", sans-serif !important;
+    color: #ffffff;
+    margin-right: 16px;
+    text-transform: none;
+    font-size: 0.875rem;
+}
+
+.header-menu-icon {
+    color: #000000;
+}
+
+.headerRightSection {
+    display: flex;
+}
+
+.search-icon-wrapper {
+    color: #757575;
+}

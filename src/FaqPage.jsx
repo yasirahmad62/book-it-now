@@ -1,10 +1,10 @@
 import React from 'react';
-
-import './App.css';
+import './Faq.css';
 import HeroImage from './components/HeroImage.jsx';
 import HeroCarousel from './components/HeroCarousel.jsx';
 import Footer from './components/Footer.jsx';
 import Header from './components/header.jsx';
+import Faq from './components/Faq.jsx';
 
 const section = [
   {
@@ -33,25 +33,25 @@ const images = [
   { src: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/Bustling_Outdoor_Food_Festival_Toronto.png?alt=media&token=aad064b3-f64f-4596-b9aa-3202bf5044c7", alt: 'Toronto' },
   { src: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/Grand_Film_Premiere_Vancouver.png?alt=media&token=796968b4-0b40-4222-a8b0-05ae87de897e", alt: 'Vancouver' },
   { src: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/Lively_Music_Concert_Montreal.png?alt=media&token=8a34f749-ae3b-4d65-9f9d-8603f64d47e6", alt: 'Montreal' },
-  {src:"https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/Thrilling_Ice_Hockey_Game_Calgary.png?alt=media&token=47f2f5eb-436a-4ccb-802d-ef5a7700f926",alt:"Calgary"}
 ];
 
-function HomePage() {
+
+function FaqPage() {
   return (
-    <div>
+    <div >
       <Header />
+      <div className='faqContainer'>
       <HeroImage images={images}/>
+  <div className="faq">
+    <Faq />
+  </div>
       <div className="heroContainer">
+        <HeroCarousel sections={premier} subHeading={"Happening near you"} title={"Worth a watch"} />
       </div>
-      <div className="heroContainer">
-        <HeroCarousel sections={premier} subHeading={"Brand new releases every Friday"} title={"Upcoming Movies"} />
-        <div className='bgHero'>
-          <HeroCarousel sections={section} subHeading={""} title={"Recommended Events"} />
-        </div>
       </div>
       <Footer />
     </div>
   );
 }
 
-export default HomePage;
+export default FaqPage;

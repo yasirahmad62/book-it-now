@@ -1,0 +1,139 @@
+.ratings-section {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-height: 560px;
+    overflow-y: auto;
+  }
+  .ratings-section::-webkit-scrollbar {
+  width: 10px; 
+}
+
+.ratings-section::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+.ratings-section::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2); 
+  border-radius: 5px; 
+}
+  .rating-overview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .MoreReview__overallRating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    background-color: #ed264f;
+    border-radius: 30px;
+    padding: 8px 16px;
+
+  }
+  
+  .MoreReview__overallRatingText {
+    font-size: 2rem;
+    color: white;
+  }
+  
+  .rating-overview p {
+    color: #666;
+  }
+  
+  .rating-filter {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .rating-category {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .rating-category svg {
+    margin-right: 5px;
+    fill: #2e054e;
+  }
+  
+  .rating-category.selected,
+  .rating-category:hover {
+    background-color: #ff0051;
+    color: white;
+  }
+  
+  .rating-category.selected svg,
+  .rating-category:hover svg {
+    fill: white;
+  }
+  
+  .reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .review-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .review-rating {
+    display: flex;
+    margin-top: 12px;
+    align-items: center;
+    margin-right: 12px;
+    font-weight: bold;
+    float: left;
+    gap: 5px;
+    background-color: #ed264f;
+    border-radius: 30px;
+    margin-bottom: 12px;
+    color: white;
+    height: 26px;
+    padding: 2px 20px;
+  }
+  
+  .review-rating svg {
+    fill: white;
+  }
+  
+  .review-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-left:48px;
+  }
+
+  .review-description {
+    margin: 10px 0;
+    color: #555;
+  }
+  
+  .review-author {
+    color: #999;
+    font-style: italic;
+  }
+  
+  .no-results{
+    margin: 60px auto;
+  }
+    
+  .no-results div{
+   margin-bottom: 40px;
+  }
+  

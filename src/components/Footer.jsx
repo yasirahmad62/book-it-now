@@ -32,6 +32,7 @@ const Footer = () => {
               <Button variant="contained" className="contact-button">
                 Contact today!
               </Button>
+              <Typography fontFamily="Work Sans">Faqs</Typography>
             </Box>
           </Grid>
           <Grid item xs={12} className="logo-container">

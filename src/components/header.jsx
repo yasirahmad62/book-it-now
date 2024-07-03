@@ -12,8 +12,9 @@ import MenuItem from '@mui/material/MenuItem';
 import AuthModal from './AuthModal';
 import { auth } from '../firebase';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import CitySelector from './CitySelector.jsx';
 import './header.css';
-
+import logo from "../icons/logobg.png"
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -58,6 +59,8 @@ function Header() {
     const [open, setOpen] = useState(false);
     const [user, setUser] = useState(null);
     const [anchorEl, setAnchorEl] = useState(null);
+    const [citySelectorOpen, setCitySelectorOpen] = useState(false);
+    const [selectedCity, setSelectedCity] = useState('Toronto');
     const openMenu = Boolean(anchorEl);
 
     useEffect(() => {
@@ -86,12 +89,19 @@ function Header() {
         });
     };
 
+    const handleCitySelectorOpen = () => setCitySelectorOpen(true);
+    const handleCitySelectorClose = () => setCitySelectorOpen(false);
+    const handleCitySelect = (city) => {
+        setSelectedCity(city);
+        handleCitySelectorClose();
+    };
+
     return (
         <AppBar position="static" className="header-appbar">
             <Toolbar className="header-toolbar">
                 <div className="header-logo">
                     <Typography variant="h2" noWrap component="div">
-                        <img src="logobg.png" alt="Logo" />
+                        <img src={logo} alt="Logo" />
                     </Typography>
                 </div>
                 <div className="header-search">
@@ -107,9 +117,9 @@ function Header() {
                     </Search>
                 </div>
                 <div className="headerRightSection">
-                    <div className="header-location">
+                    <div className="header-location" onClick={handleCitySelectorOpen}>
                         <Typography variant="h6" noWrap component="div" fontFamily={"Work Sans"}>
-                            Toronto
+                            {selectedCity}
                         </Typography>
                     </div>
                     <div className="header-actions">
@@ -148,6 +158,12 @@ function Header() {
                 </div>
             </Toolbar>
             <AuthModal open={open} handleClose={handleClose} />
+            <CitySelector 
+                open={citySelectorOpen} 
+                onClose={handleCitySelectorClose} 
+                onSelectCity={handleCitySelect} 
+                selectedCity={selectedCity} 
+            />
         </AppBar>
     );
 }

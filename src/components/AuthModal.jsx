@@ -1,10 +1,8 @@
-// src/components/AuthModal.js
-
 import React, { useState } from 'react';
-import { Modal, Box, Button, TextField, Typography, IconButton } from '@mui/material';
+import { Modal, Box, Button, TextField, Typography, IconButton, CircularProgress, Alert } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { auth, googleProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword } from '../firebase';
-import './AuthModal.css'; // Import the CSS file for styling
+import './AuthModal.css';
 
 const style = {
     position: 'absolute',
@@ -22,41 +20,78 @@ const style = {
 export default function AuthModal({ open, handleClose }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
+
+    const resetForm = () => {
+        setEmail('');
+        setPassword('');
+        setLoading(false);
+        setError('');
+        setSuccess('');
+    };
 
     const handleGoogleSignIn = async () => {
+        setLoading(true);
+        setError('');
         try {
             const result = await signInWithPopup(auth, googleProvider);
             sessionStorage.setItem('userId', result.user.uid);
+            setSuccess('Successfully signed in with Google');
+            resetForm();
             handleClose();
         } catch (error) {
+            setError('Failed to sign in with Google');
             console.error(error);
+        } finally {
+            setLoading(false);
         }
     };
 
     const handleEmailSignIn = async () => {
+        setLoading(true);
+        setError('');
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             sessionStorage.setItem('userId', userCredential.user.uid);
+            setSuccess('Successfully signed in');
+            resetForm();
             handleClose();
         } catch (error) {
+            setError('Failed to sign in. Please check your email and password.');
             console.error(error);
-           
+        } finally {
+            setLoading(false);
         }
     };
 
     const handleEmailSignUp = async () => {
+        if (!email || !password) {
+            setError('Please enter both email and password');
+            return;
+        }
+        setLoading(true);
+        setError('');
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             sessionStorage.setItem('userId', userCredential.user.uid);
+            setSuccess('Successfully signed up');
+            resetForm();
             handleClose();
         } catch (error) {
             if (error.code === 'auth/email-already-in-use') {
-               
                 handleEmailSignIn();
+            } else if (error.code === 'auth/invalid-email') {
+                setError('Invalid email address');
+            } else if (error.code === 'auth/weak-password') {
+                setError('Password should be at least 6 characters');
             } else {
-                console.error(error);
-                
+                setError('Failed to sign up');
             }
+            console.error(error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -69,8 +104,16 @@ export default function AuthModal({ open, handleClose }) {
                 <Typography variant="h6" component="h2" className="modal-title">
                     Get Started
                 </Typography>
-                <Button onClick={handleGoogleSignIn} fullWidth  className="modal-button" startIcon={<img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google" />}>
-                    Continue with Google
+                {error && <Alert severity="error">{error}</Alert>}
+                {success && <Alert severity="success">{success}</Alert>}
+                <Button 
+                    onClick={handleGoogleSignIn} 
+                    fullWidth 
+                    className="modal-button" 
+                    startIcon={<img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google" />}
+                    disabled={loading}
+                >
+                    {loading ? <CircularProgress size={24} /> : 'Continue with Google'}
                 </Button>
                 <TextField
                     label="Email"
@@ -80,6 +123,7 @@ export default function AuthModal({ open, handleClose }) {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="modal-textfield"
+                    disabled={loading}
                 />
                 <TextField
                     label="Password"
@@ -90,9 +134,10 @@ export default function AuthModal({ open, handleClose }) {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="modal-textfield"
+                    disabled={loading}
                 />
-                <Button onClick={handleEmailSignUp} className="modal-button">
-                    Sign Up with Email
+                <Button onClick={handleEmailSignUp} className="modal-button" disabled={loading}>
+                    {loading ? <CircularProgress size={24} /> : 'Sign Up with Email'}
                 </Button>
                 <Typography variant="body2" className="terms-privacy">
                     I agree to the <a href="/terms">Terms & Conditions</a> & <a href="/privacy">Privacy Policy</a>

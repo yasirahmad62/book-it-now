@@ -1,0 +1,34 @@
+.faq-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .faq-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .faq-item {
+    margin-bottom: 10px;
+  }
+  
+  .faq-question {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .faq-answer {
+    display: block;
+    margin-top: 5px;
+  }
+  
+  .faq-toggle-button {
+    background-color: #ff4081 !important;
+    color: white;
+    margin-top: 10px;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+  }
+  

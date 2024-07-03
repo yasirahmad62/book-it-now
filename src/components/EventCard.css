@@ -1,0 +1,85 @@
+.event-card {
+  padding: 10px; 
+  text-align: center;
+}
+
+.event-image {
+  width: 204px; /* Set fixed width */
+  height: 346px; /* Set fixed height */
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 auto; /* Center the image */
+}
+
+.event-info {
+  padding: 10px 0;
+  text-align: left;
+}
+
+.event-rating {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.star, .thumb {
+  color: red;
+  margin-right: 5px;
+}
+
+.votes {
+  color: #666;
+  margin-left: 5px;
+}
+
+.event-title {
+  font-size: 18px;
+  margin: 10px 0;
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.event-genre {
+  font-size: 14px;
+  color: #666;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black;
+}
+
+.slick-slide div {
+  margin: 10px;
+}
+
+@media (max-width: 768px) {
+  .event-image {
+    width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .event-card {
+    padding: 5px;
+  }
+
+  .event-info {
+    padding: 5px 0;
+  }
+
+  .event-title {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+
+  .event-genre {
+    font-size: 12px;
+  }
+
+  .event-rating {
+    font-size: 12px;
+  }
+}

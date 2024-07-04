@@ -1,0 +1,89 @@
+.main-box {
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.large-view {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.border-view {
+    border: 2px solid #ff4081;
+}
+
+.content-section {
+    text-align: center;
+}
+
+.form-wrap {
+    margin-bottom: 20px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-item {
+    margin-bottom: 15px;
+}
+
+.input-wrap {
+    position: relative;
+}
+
+.auxiliary-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.drop-down-wrap select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.drop-down-filled {
+    background: url('data:image/svg+xml;base64,...') no-repeat right #fff;
+}
+
+.text-area-wrap {
+    position: relative;
+}
+
+.text-area-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    resize: none;
+}
+
+.btn {
+    background-color: #ff4081;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn.primary {
+    background-color: #ff4081;
+}
+
+.btn.full-width {
+    width: 100%;
+}
+
+.btn-inner-content {
+    display: block;
+}

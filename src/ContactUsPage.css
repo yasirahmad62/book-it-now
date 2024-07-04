@@ -1,0 +1,12 @@
+
+.contact-us-page {
+    display: flex;
+    flex-direction: row;
+    max-width: 1240px;
+    margin: 0px auto;
+    align-items: center;
+    padding: 40px;
+    border: 2px solid #000;
+    border-radius: 12px;
+    margin-bottom: 120px;
+}

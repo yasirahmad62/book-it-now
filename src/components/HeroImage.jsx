@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./HeroImage.css";
 
-const HeroImage = ({ images }) => {
+const HeroImage = ({ images, hideArrows }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrevClick = () => {
@@ -16,9 +16,13 @@ const HeroImage = ({ images }) => {
 
   return (
     <div className="hero-image-carousel">
-      <button className="carousel-button prev-button" onClick={handlePrevClick}>❮</button>
+      {!hideArrows && (
+        <>
+          <button className="carousel-button prev-button" onClick={handlePrevClick}>❮</button>
+          <button className="carousel-button next-button" onClick={handleNextClick}>❯</button>
+        </>
+      )}
       <img src={images[currentIndex].src} alt={images[currentIndex].alt} className="hero-image" />
-      <button className="carousel-button next-button" onClick={handleNextClick}>❯</button>
     </div>
   );
 };

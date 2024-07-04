@@ -1,0 +1,34 @@
+.location-wrap {
+    text-align: left;
+    margin-top: 40px;
+}
+
+.location {
+    margin-bottom: 20px;
+}
+
+.location h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.location p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.location a {
+    color: #ff4081;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.location a:hover {
+    text-decoration: underline;
+}
+
+iframe {
+    border: none;
+    margin-top: 10px;
+}

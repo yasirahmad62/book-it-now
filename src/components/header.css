@@ -70,6 +70,7 @@
 
 .headerRightSection {
     display: flex;
+    gap: 28px;
 }
 
 .search-icon-wrapper {

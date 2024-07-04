@@ -20,6 +20,10 @@
     flex-direction: column;
     text-align: center;
   }
+  .linkContact{
+    text-decoration: none !important;
+    color: white; 
+  }
   
   .footer-item .MuiSvgIcon-root {
     font-size: 40px;

@@ -15,6 +15,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CitySelector from './CitySelector.jsx';
 import './header.css';
 import logo from "../icons/logobg.png"
+
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -52,6 +53,16 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         [theme.breakpoints.up('md')]: {
             width: '20ch',
         },
+    },
+}));
+
+const CityButton = styled(Button)(({ theme }) => ({
+    fontFamily: "Work Sans",
+    textTransform: 'none',
+    color: '#000',
+    backgroundColor: '#f2f2f2',
+    '&:hover': {
+        backgroundColor: '#e0e0e0',
     },
 }));
 
@@ -99,11 +110,14 @@ function Header() {
     return (
         <AppBar position="static" className="header-appbar">
             <Toolbar className="header-toolbar">
+                <a href="/">
                 <div className="header-logo">
                     <Typography variant="h2" noWrap component="div">
                         <img src={logo} alt="Logo" />
                     </Typography>
+                    
                 </div>
+                </a>
                 <div className="header-search">
                     <Search className="search">
                         <SearchIconWrapper className="search-icon-wrapper">
@@ -117,11 +131,9 @@ function Header() {
                     </Search>
                 </div>
                 <div className="headerRightSection">
-                    <div className="header-location" onClick={handleCitySelectorOpen}>
-                        <Typography variant="h6" noWrap component="div" fontFamily={"Work Sans"}>
-                            {selectedCity}
-                        </Typography>
-                    </div>
+                    <CityButton onClick={handleCitySelectorOpen}>
+                        {selectedCity}
+                    </CityButton>
                     <div className="header-actions">
                         {user ? (
                             <>

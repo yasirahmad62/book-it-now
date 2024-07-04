@@ -20,6 +20,18 @@ const FooterContainer = styled(Box)({
   textAlign: 'center',
 });
 
+const CityButton = styled(Button)(({ theme }) => ({
+  fontFamily: "Work Sans",
+  textTransform: 'none',
+  display:"flex",
+  marginTop:"24px",
+  color: '#000',
+  backgroundColor: '#f2f2f2',
+  '&:hover': {
+      backgroundColor: '#e0e0e0',
+  },
+}));
+
 const Footer = () => {
   return (
     <FooterContainer>
@@ -29,10 +41,16 @@ const Footer = () => {
             <Box className="list-your-show">
               <Typography variant="h6" noWrap component="div" fontFamily="Work Sans">List your Show</Typography>
               <Typography fontFamily="Work Sans">Got a show, event, activity or a great experience? Partner with us & get listed on BookItNow</Typography>
+              <a href="/contact-us">
               <Button variant="contained" className="contact-button">
                 Contact today!
               </Button>
-              <Typography fontFamily="Work Sans">Faqs</Typography>
+              </a>
+              <a href="/faq">
+              <CityButton >
+                        Learn more
+                    </CityButton>
+                    </a>
             </Box>
           </Grid>
           <Grid item xs={12} className="logo-container">
@@ -43,7 +61,9 @@ const Footer = () => {
           <Grid item xs={4}>
             <Box className="footer-item">
               <CustomerServiceIcon />
+              <a href="/contact-us" className='linkContact'>
               <Typography fontFamily="Work Sans">24/7 CUSTOMER CARE</Typography>
+              </a>
             </Box>
           </Grid>
           <Grid item xs={4}>

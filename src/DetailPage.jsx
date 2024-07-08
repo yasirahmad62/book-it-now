@@ -1,49 +1,35 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import Header from "./components/header.jsx";
-import HeroCarousel from './components/HeroCarousel.jsx';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import Header from './components/header';
+import HeroCarousel from './components/HeroCarousel';
 import Footer from './components/Footer';
 import './DetailPage.css';
-import RatingsSection from './components/RatingsSection.jsx';
+import RatingsSection from './components/RatingsSection';
+import axios from 'axios';
+import { premier, section } from './const/const';
 
-const DetailPage = () => {
+const DetailPage = ({type}) => {
   const navigate = useNavigate();
+  const { id } = useParams(); // Retrieve the movie ID from the URL
+  const [movieDetails, setMovieDetails] = useState(null);
+  const bookingUrl = `/bookings/${id}`;
 
-  const movieDetails = {
-    title: "Bad Boys: Ride or Die",
-    rating: 8.6,
-    votes: "19.6K",
-    duration: "1h 57m",
-    releaseDate: "6 Jun, 2024",
-    genres: ["Action", "Adventure", "Comedy"],
-    languages: ["English", "Hindi", "French", "Spanish"],
-    formats: ["2D", "ICE", "MX4D", "4DX", "2D SCREEN X", "IMAX 2D"],
-    imgSrc: "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/bad-boys-ride-or-die-et00383487-1719560098.jpg",
-    bgImage: "https://assets-in.bmscdn.com/iedb/movies/images/mobile/listing/xxlarge/bad-boys-ride-or-die-et00383487-1719560098.jpg",
-  };
-  const section = [
-    {
-      items: [
-        { image: "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-RnJpLCAxMiBKdWw%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00399065-fmldyzmmrf-portrait.jpg", title: "Sunburn Arena Ft. Deadmau5", genre: "Concerts", rating: 45.9, ratingType: 'thumb', votes: "K Likes" },
-        { image: "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U2F0LCAyMiBKdW4%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00398652-encutaebbr-portrait.jpg", title: "TECHNOSPHERE", genre: "Concerts", rating: 7.2, ratingType: 'star', votes: "18K Votes" },
-        { image: "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U3VuLCAyMyBKdW4%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00394823-rthvgnnvkf-portrait.jpg", title: "NATIONAL MMA CHAMPIONSHIP", genre: "Sports", rating: 21.2, ratingType: 'thumb', votes: "K Likes" },
-        { image: "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-RnJpLCA3IEp1bg%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00365053-xgnelcqapc-portrait.jpg", title: "Nothing Makes Sense FT. VARUN GROVER", genre: "Stand up", rating: 9.1, ratingType: 'star', votes: "41.9K Votes" },
-        { image: "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-V2VkLCAyMCBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00376525-ckdxrxryjz-portrait.jpg", title: "Yacht cruise ", genre: "Jetty No 5", rating: 8.7, ratingType: 'star', votes: "3.2K Votes" }
-      ]
-    },
-  ];
+  useEffect(() => {
+    const fetchMovieDetails = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/api/${type}/${id}`);
+        setMovieDetails(response.data);
+      } catch (error) {
+        console.error('Error fetching movie details:', error);
+      }
+    };
 
-  const premier = [
-    {
-      items: [
-        { image: "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:l-image,i-discovery-catalog@@icons@@bms_premiere_v1.png,t-false,lfo-bottom_left,l-end/et00397579-hfnmhnhwae-portrait.jpg", title: "Ghostbusters: Frozen Empire", genre: "English", rating: null, ratingType: null, votes: null },
-        { image: "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:l-image,i-discovery-catalog@@icons@@bms_premiere_v1.png,t-false,lfo-bottom_left,l-end/et00396946-talzlpzjea-portrait.jpg", title: "Skins Season 5", genre: "English, Hindi, Tamil, Telugu", rating: null, ratingType: null, votes: null },
-        { image: "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:l-image,i-discovery-catalog@@icons@@bms_premiere_v1.png,t-false,lfo-bottom_left,l-end/et00380545-yvnvthlvjj-portrait.jpg", title: "Endeavour Series 4", genre: "English", rating: null, ratingType: null, votes: null },
-        { image: "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:l-image,i-discovery-catalog@@icons@@bms_premiere_v1.png,t-false,lfo-bottom_left,l-end/et00399151-pllzggsjst-portrait.jpg", title: "Lunana: A Yak in the Classroom", genre: "Dzongkha", rating: null, ratingType: null, votes: null },
-        { image: "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:l-image,i-discovery-catalog@@icons@@bms_premiere_v1.png,t-false,lfo-bottom_left,l-end/et00399062-jpggjbhrzz-portrait.jpg", title: "Green Border (Polish)", genre: "Polish", rating: null, ratingType: null, votes: null }
-      ]
-    }
-  ];
+    fetchMovieDetails();
+  }, [id]);
+
+  if (!movieDetails) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
@@ -92,23 +78,60 @@ const DetailPage = () => {
                 <span>{movieDetails.releaseDate}</span>
               </div>
             </div>
-            <button className="book-tickets">Book tickets</button>
+            <a href={bookingUrl}>
+              <button className="book-tickets">Book tickets</button>
+            </a>
           </div>
         </div>
       </section>
-      <div className='detailPageContainer'>
-        <div >
-          <span class="event-description__EventDescriptionContainer-sc-o4g232-1 gHdeCC"><h2 class="event-description__Title-sc-o4g232-2 btsbpT">About the movie</h2><div class="event-description__DescriptionContainer-sc-o4g232-3 gSmoFT"><span>The world`s favorite Bad Boys are back with their iconic mix of edge-of-your-seat action and outrageous comedy but this time with a twist: Miami`s finest are now on the run. </span></div></span>
+      <div className="detailPageContainer">
+        <div>
+          <span className="event-description__EventDescriptionContainer-sc-o4g232-1 gHdeCC">
+            <h2 className="event-description__Title-sc-o4g232-2 btsbpT">About the movie</h2>
+            <div className="event-description__DescriptionContainer-sc-o4g232-3 gSmoFT">
+              <span>{movieDetails.description}</span>
+            </div>
+          </span>
           <hr />
         </div>
-        <div >
-          <span class="event-description__EventDescriptionContainer-sc-o4g232-1 gHdeCC"><h2 class="event-description__Title-sc-o4g232-2 btsbpT">Ratings & Reviews</h2>
-            </span>
+        <div className="detailPage-cast-crew-section">
+  <div className="detailPage-section">
+    <h2 className="detailPage-section-title">Cast</h2>
+    <div className="detailPage-section-content">
+      {movieDetails.cast.map((castMember, index) => (
+        <div key={index} className="detailPage-card">
+          <div className="detailPage-card-content">
+            <strong>{castMember.name}</strong>
+            <p>{castMember.role}</p>
+          </div>
         </div>
-        <RatingsSection/>
+      ))}
+    </div>
+  </div>
+  <div className="detailPage-section">
+    <h2 className="detailPage-section-title">Crew</h2>
+    <div className="detailPage-section-content">
+      {movieDetails.crew.map((crewMember, index) => (
+        <div key={index} className="detailPage-card">
+          <div className="detailPage-card-content">
+            <strong>{crewMember.name}</strong>
+            <p>{crewMember.role}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+        <div>
+          <span className="event-description__EventDescriptionContainer-sc-o4g232-1 gHdeCC">
+            <h2 className="event-description__Title-sc-o4g232-2 btsbpT">Ratings & Reviews</h2>
+          </span>
+        </div>
+        <RatingsSection reviews={movieDetails.userReviews} />
         <div className="heroContainer">
           <HeroCarousel sections={premier} subHeading={""} title={"Related Movies"} />
-          <div className='bgHero'>
+          <div className="bgHero">
             <HeroCarousel sections={section} subHeading={""} title={"People also like"} />
           </div>
         </div>

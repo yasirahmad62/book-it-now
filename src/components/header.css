@@ -2,6 +2,7 @@
     background-color: #ffffff !important;
     color: #000000;
     box-shadow: none;
+    font-family: "Noto Sans", sans-serif;
     border-bottom: 1px solid #e0e0e0 !important;
     padding: 0 16px;
 }
@@ -36,7 +37,7 @@
 
 .styled-input-base {
     color: #000000;
-    font-family: "Work Sans", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     width: 100%;
     padding: 8px 8px 8px calc(1em + 32px);
     font-size: 0.875rem;
@@ -57,7 +58,7 @@
 
 .header-signin-button {
     background-color: rgb(220, 53, 75) !important;
-    font-family: "Work Sans", sans-serif !important;
+    font-family: "Noto Sans", sans-serif !important;
     color: #ffffff;
     margin-right: 16px;
     text-transform: none;
@@ -71,6 +72,9 @@
 .headerRightSection {
     display: flex;
     gap: 28px;
+}
+.cityButton{
+    color: #000000 !important;
 }
 
 .search-icon-wrapper {

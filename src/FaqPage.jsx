@@ -41,7 +41,7 @@ function FaqPage() {
     <div >
       <Header />
       <div className='faqContainer'>
-      <HeroImage images={images}/>
+      <HeroImage images={images} hideArrows/>
   <div className="faq">
     <Faq />
   </div>

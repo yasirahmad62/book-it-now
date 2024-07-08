@@ -3,22 +3,31 @@ import './FilterComponent.css';
 
 const FilterComponent = ({ filterName, filterValues, onFilterChange }) => {
   const [expanded, setExpanded] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState(null);
+  const [selectedFilter, setSelectedFilter] = useState("");
 
   const handleExpand = () => {
     setExpanded(!expanded);
   };
 
   const handleFilterSelect = (filter) => {
+    onFilterChange(filterName, filter); // Updated to pass filterName and filter value immediately
     setSelectedFilter(filter);
-    onFilterChange(filter);
+
   };
 
   return (
     <div className="filter-container">
       <div className="filter-header" onClick={handleExpand}>
         <span>{filterName}</span>
-        <button className="clear-btn" onClick={() => handleFilterSelect(null)}>Clear</button>
+        <button 
+          className="clear-btn" 
+          onClick={(e) => {
+            e.stopPropagation(); 
+            handleFilterSelect("");
+          }}
+        >
+          Clear
+        </button>
       </div>
       {expanded && (
         <div className="filter-options">

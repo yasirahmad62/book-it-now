@@ -1,0 +1,36 @@
+.checkout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .back-button, .close-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .movie-details {
+    flex-grow: 1;
+    text-align: center;
+  }
+  
+  .movie-details h1 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .movie-details p {
+    margin: 0;
+    font-size: 14px;
+  }
+  

@@ -11,7 +11,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import PinterestIcon from '@mui/icons-material/Pinterest';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import './Footer.css';
-
+import Logo from "../icons/logobg.png"
 const FooterContainer = styled(Box)({
   backgroundColor: '#2C2C2C',
   paddingTop: '40px',
@@ -55,7 +55,7 @@ const Footer = () => {
           </Grid>
           <Grid item xs={12} className="logo-container">
             <div className="logo-frame">
-              <img src="logobg.png" alt="Logo" className="logo-image" />
+              <img src={Logo} alt="Logo" className="logo-image" />
             </div>
           </Grid>
           <Grid item xs={4}>

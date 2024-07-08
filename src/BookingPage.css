@@ -1,0 +1,48 @@
+.showInfo{
+    max-width: 1240px;
+    margin: 0px auto;
+}
+
+
+.datePickerContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 32px;
+}
+
+.date-selector {
+    display: flex;
+    align-items: center;
+}
+
+.date-selector button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #ff4081;
+    cursor: pointer;
+}
+
+.date-selector .dates {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.date-selector .date-item {
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.date-selector .date-item.selected {
+    background-color: #ff4081;
+    color: white;
+}
+
+.date-selector .date-item:hover {
+    background-color: #ff6081;
+    color: white;
+}

@@ -1,5 +1,5 @@
 .main-box {
-    padding: 20px;
+    padding: 40px; /* Increased padding to ensure content does not touch the border */
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -12,10 +12,17 @@
 
 .border-view {
     border: 2px solid #ff4081;
-}
 
+}
+input {
+    box-sizing: border-box;
+}
+textarea{
+    box-sizing: border-box;
+}
 .content-section {
     text-align: center;
+    box-sizing: border-box;
 }
 
 .form-wrap {
@@ -50,7 +57,7 @@
 }
 
 .drop-down-filled {
-    background: url('data:image/svg+xml;base64,...') no-repeat right #fff;
+    background: url('../icons/dropdown-svgrepo-com.svg') no-repeat right #fff;
 }
 
 .text-area-wrap {
@@ -84,6 +91,13 @@
     width: 100%;
 }
 
+.loadingIcon{
+    width: 120px;
+    display: flex;
+margin: auto;
+height: 40px;
+text-align: center;
+}
 .btn-inner-content {
     display: block;
 }

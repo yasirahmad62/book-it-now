@@ -8,24 +8,24 @@ const ContactUsLocations = () => {
             <div className="location">
                 <h3>Corporate Office</h3>
                 <p>
-                    Valuedrive Technologies Private Limited<br />
-                    8th Floor, Capital Business Park, Sector 48, Gurugram, Haryana 122018
+                    Tech Solutions Inc.<br />
+                    1234 Innovation Drive, Suite 500, Waterloo, Ontario N2L 3G1, Canada
                 </p>
-                <a href="https://www.google.com/maps/place/CAPITAL+BUSINESS+PARK/@28.4156001,77.0391555,18.89z/data=!4m6!3m5!1s0x390d23776c51cacd:0x7077dd947071569f!8m2!3d28.4156818!4d77.0393364!16s%2Fg%2F11gh6b__74" target="_blank" rel="noreferrer">
+                <a href="https://www.google.com/maps/place/1234+Innovation+Dr,+Waterloo,+ON+N2L+3G1,+Canada/" target="_blank" rel="noreferrer">
                     View on Google Map
                 </a>
             </div>
             <div className="location">
                 <h3>Registered Office</h3>
                 <p>
-                    Pureride Technologies Private Limited<br />
-                    B1/H3 Mohan Cooperative Industrial Area Mathura Road, Block -B Delhi South Delhi 110044
+                    Tech Innovations Ltd.<br />
+                    5678 Technology Avenue, Toronto, Ontario M5G 1Z8, Canada
                 </p>
-                <a href="https://www.google.com/maps/place/B-1,+Block+E,+Mohan+Cooperative+Industrial+Estate,+Badarpur,+New+Delhi,+Delhi+110044/data=!3m1!4b1!4m5!3m4!1s0x390ce6cf6c89da1b:0x4a38a2bd22f3bf06!8m2!3d28.50857!4d77.29672" target="_blank" rel="noreferrer">
+                <a href="https://www.google.com/maps/place/5678+Technology+Ave,+Toronto,+ON+M5G+1Z8,+Canada/" target="_blank" rel="noreferrer">
                     View on Google Map
                 </a>
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1754.5605906002131!2d77.0391555!3d28.4156001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d23776c51cacd%3A0x7077dd947071569f!2sCAPITAL%20BUSINESS%20PARK!5e0!3m2!1sen!2sin!4v1683271250393!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.3723774322554!2d-79.387057!3d43.6510708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34d6f52336b7%3A0x5f89e8f9058f8f4b!2s5678%20Technology%20Ave%2C%20Toronto%2C%20ON%20M5G%201Z8%2C%20Canada!5e0!3m2!1sen!2sca!4v1623318632000!5m2!1sen!2sca"
                     width="100%" height="300" frameBorder="0" title="Google Map" allowFullScreen></iframe>
             </div>
         </div>

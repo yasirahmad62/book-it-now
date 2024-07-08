@@ -1,0 +1,29 @@
+.booking-summary {
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 20px;
+  }
+  
+  .booking-summary h2 {
+    margin-top: 0;
+  }
+  
+  .booking-summary p {
+    margin: 10px 0;
+  }
+  
+  .proceed-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+  }
+  

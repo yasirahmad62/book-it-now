@@ -1,0 +1,34 @@
+/* src/components/Showtimes/TheaterInfo.css */
+.theater-info {
+    margin-bottom: 10px;
+}
+
+.theater-info h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.theater-info p {
+    margin: 5px 0;
+    color: #777;
+}
+
+.facilities {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.facility {
+    padding: 5px 10px;
+    background: #eee;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.non-cancellable {
+    display: inline-block;
+    margin-top: 5px;
+    color: #e74c3c;
+    font-weight: bold;
+}

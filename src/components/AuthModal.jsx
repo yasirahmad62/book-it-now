@@ -17,7 +17,7 @@ const style = {
     fontFamily: 'Work Sans, sans-serif',
 };
 
-export default function AuthModal({ open, handleClose }) {
+export default function AuthModal({ open, handleClose, showClose }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -96,20 +96,31 @@ export default function AuthModal({ open, handleClose }) {
     };
 
     return (
-        <Modal open={open} onClose={handleClose}>
+        <Modal
+            open={open}
+            onClose={handleClose}
+            BackdropProps={{
+                style: {
+                    backgroundColor: 'rgba(200, 200, 200, 0.9)'
+                },
+                onClick: (e) => e.stopPropagation() // Disable backdrop click
+            }}
+        >
             <Box sx={style}>
-                <IconButton className="close-button" onClick={handleClose}>
-                    <CloseIcon />
-                </IconButton>
+                {!showClose && (
+                    <IconButton className="close-button" onClick={handleClose}>
+                        <CloseIcon />
+                    </IconButton>
+                )}
                 <Typography variant="h6" component="h2" className="modal-title">
                     Get Started
                 </Typography>
                 {error && <Alert severity="error">{error}</Alert>}
                 {success && <Alert severity="success">{success}</Alert>}
-                <Button 
-                    onClick={handleGoogleSignIn} 
-                    fullWidth 
-                    className="modal-button" 
+                <Button
+                    onClick={handleGoogleSignIn}
+                    fullWidth
+                    className="modal-button"
                     startIcon={<img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google" />}
                     disabled={loading}
                 >

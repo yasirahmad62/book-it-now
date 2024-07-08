@@ -9,12 +9,13 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import AuthModal from './AuthModal';
-import { auth } from '../firebase';
+import AuthModal from './AuthModal.jsx';
+import { auth } from '../firebase.js';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CitySelector from './CitySelector.jsx';
 import './header.css';
 import logo from "../icons/logobg.png"
+import TabHeader from './TabHeader.jsx';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -66,7 +67,7 @@ const CityButton = styled(Button)(({ theme }) => ({
     },
 }));
 
-function Header() {
+function Header({ isLoggedIn }) {
     const [open, setOpen] = useState(false);
     const [user, setUser] = useState(null);
     const [anchorEl, setAnchorEl] = useState(null);
@@ -79,7 +80,13 @@ function Header() {
         if (userId) {
             setUser(userId);
         }
-    }, []);
+        if (isLoggedIn) {
+            if (!userId) {
+                setOpen(true)
+            }
+        }
+
+    }, [user]);
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -108,15 +115,16 @@ function Header() {
     };
 
     return (
+        <>
         <AppBar position="static" className="header-appbar">
             <Toolbar className="header-toolbar">
                 <a href="/">
-                <div className="header-logo">
-                    <Typography variant="h2" noWrap component="div">
-                        <img src={logo} alt="Logo" />
-                    </Typography>
-                    
-                </div>
+                    <div className="header-logo">
+                        <Typography variant="h2" noWrap component="div">
+                            <img src={logo} alt="Logo" />
+                        </Typography>
+
+                    </div>
                 </a>
                 <div className="header-search">
                     <Search className="search">
@@ -131,9 +139,9 @@ function Header() {
                     </Search>
                 </div>
                 <div className="headerRightSection">
-                    <CityButton onClick={handleCitySelectorOpen}>
+                    <Button onClick={handleCitySelectorOpen}  className="cityButton">
                         {selectedCity}
-                    </CityButton>
+                    </Button>
                     <div className="header-actions">
                         {user ? (
                             <>
@@ -169,14 +177,16 @@ function Header() {
                     </div>
                 </div>
             </Toolbar>
-            <AuthModal open={open} handleClose={handleClose} />
-            <CitySelector 
-                open={citySelectorOpen} 
-                onClose={handleCitySelectorClose} 
-                onSelectCity={handleCitySelect} 
-                selectedCity={selectedCity} 
+            <AuthModal open={open} handleClose={handleClose} showClose={isLoggedIn} />
+            <CitySelector
+                open={citySelectorOpen}
+                onClose={handleCitySelectorClose}
+                onSelectCity={handleCitySelect}
+                selectedCity={selectedCity}
             />
         </AppBar>
+        <TabHeader/>
+        </>
     );
 }
 

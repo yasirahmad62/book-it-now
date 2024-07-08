@@ -1,4 +1,7 @@
 .event-card {
+  cursor: pointer;
+  width: 224px;
+  height: 472px;
   padding: 10px; 
   text-align: center;
 }
@@ -36,7 +39,7 @@
 .event-title {
   font-size: 18px;
   margin: 10px 0;
-  font-family: "Work Sans", sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
@@ -55,7 +58,6 @@
 .slick-slide div {
   margin: 10px;
 }
-
 @media (max-width: 768px) {
   .event-image {
     width: 100%; /* Make the image responsive */

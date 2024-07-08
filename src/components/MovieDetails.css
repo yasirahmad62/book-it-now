@@ -1,0 +1,50 @@
+.movie-details {
+    padding: 20px;
+    margin: auto;
+    max-width: 1240px;
+
+    border-bottom: 1px solid #ddd;
+}
+
+.movie-header {
+    display: flex;
+    gap: 20px;
+}
+
+.movie-poster {
+    width: 150px;
+    border-radius: 10px;
+}
+
+.movie-info {
+    flex: 1;
+}
+
+.movie-info h2 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+.movie-meta {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.movie-genres {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.genre {
+    background: #eee;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.movie-description {
+    font-size: 1em;
+    color: #555;
+}

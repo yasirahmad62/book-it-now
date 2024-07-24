@@ -10,6 +10,7 @@ import FaqPage from "./FaqPage";
 import ContactUsPage from "./ContactUsPage";
 import BookingPage from "./BookingPage";
 import CheckoutPage from "./CheckoutPage";
+import NotFoundPage from "./NotFoundPage";
 
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
             <Route path="/contact-us" element={<ContactUsPage />} />
             <Route path="/bookings/:id" element={<BookingPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/notfound" element={<NotFoundPage />} />
+            <Route path="/cancel" element={<NotFoundPage />} />
           </Routes>
         </div>
       </Router>

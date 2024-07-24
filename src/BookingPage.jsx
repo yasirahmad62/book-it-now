@@ -40,7 +40,7 @@ const BookingPage = () => {
       .catch(error => console.error('Error fetching movie details:', error));
   }, [dispatch, storedCity]);
 
-  useEffect(() => {
+  useEffect(() => { 
     const today = new Date();
     const dates = [];
     for (let i = 0; i < 7; i++) {

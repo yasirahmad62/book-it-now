@@ -3,11 +3,13 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setSeats } from '../store/bookingSlice';
 import "./SeatMap.css";
+import CheckoutButton from "./CheckoutButton";
 import Handicap from "../icons/Handicap";
 
 const SeatMap = ({ onSelectSeats,pricing}) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const ticketPrice = 2400; // Example price in cents
+  const convenienceFee = 340; // Example fee in cents
   const seatingPlan = {
     seating_plan_id: "xyz1234566",
     booked_seats: [0, 1, 2, 5, 19, 20, 23, 120, 39],
@@ -72,9 +74,6 @@ const SeatMap = ({ onSelectSeats,pricing}) => {
     return seats;
   };
 
-  const handleBookSeats = () => {
-    navigate('/checkout');
-  };
 
   let seatIndex = 0;
   return (
@@ -103,9 +102,11 @@ const SeatMap = ({ onSelectSeats,pricing}) => {
           <span className="seat booked"></span> Sold
         </div>
       </div>
-      <button className={'bookingButton'} onClick={handleBookSeats}>
-        Book Seats
-      </button>
+      <CheckoutButton
+        selectedSeats={selectedSeats}
+        ticketPrice={ticketPrice}
+        convenienceFee={convenienceFee}
+      />
     </div>
   );
 };

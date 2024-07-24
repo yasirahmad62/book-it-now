@@ -8,6 +8,15 @@
     list-style-type: none;
     padding: 0;
   }
+  .checkoutBtnc {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff4081;
+    border-radius: 8px;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
   
   .faq-item {
     margin-bottom: 10px;

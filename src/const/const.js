@@ -374,3 +374,132 @@ export const filterOptions = {
       ]
     }
   ];
+
+
+  export const ERSQuestionsconst  = [
+    {
+        question: "What do you want to watch for your entertainment?",
+        options: [
+            { text: "EVENTS", subcontext: "If you enjoy live performances", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/calendar_with_star_icon.png?alt=media&token=2fc68d65-7df0-4b9d-90d9-008b4ef836c3" },
+            { text: "MOVIES", subcontext: "If you love watching films", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/film_reel_icon.png?alt=media&token=288574bd-ae6d-4d08-a800-84c0b84d09cc" },
+            { text: "SPORTS", subcontext: "If you are into athletic events", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/trophy_icon.png?alt=media&token=0537ecde-9f7a-4b75-918a-047805b217a8" },
+        ],
+    },
+    {
+        question: "What type of events are you interested in?",
+        condition: "EVENTS",
+        options: [
+            { text: "CONCERTS", subcontext: "Live music shows", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/musical_note_microphone_icon.png?alt=media&token=25d526de-f877-440c-abea-5693bd1e83a8" },
+            { text: "THEATRE", subcontext: "Dramatic performances", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/comedy_tragedy_masks_icon.png?alt=media&token=d4b6dbd5-4912-48ff-958f-5c563898ca69" },
+            { text: "EXHIBITIONS", subcontext: "Art and culture displays", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/art_easel_painting_icon.png?alt=media&token=9af3e7fa-4044-411f-b74f-ac2089c64cd8" },
+            { text: "FESTIVALS", subcontext: "Cultural celebrations", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/festive_tent_balloons_icon.png?alt=media&token=6ad2e333-6309-482d-a367-279cab9f87b8" },
+        ],
+    },
+    {
+        question: "What genre of movies do you prefer?",
+        condition: "MOVIES",
+        options: [
+            { text: "ACTION", subcontext: "High-octane thrills", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/film_clapperboard_explosion_icon.png?alt=media&token=13c671d9-c1ba-4873-abdf-930647895f0d" },
+            { text: "COMEDY", subcontext: "Laughter and fun", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/laughing_emoji_film_reel_icon.png?alt=media&token=e23c4d42-2241-49d5-8fb6-766b0c2baaf7" },
+            { text: "DRAMA", subcontext: "Emotional storytelling", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/theatre_mask_broken_heart_icon.png?alt=media&token=5ab472ad-086e-4cdf-a65f-56338cb54f09" },
+            { text: "HORROR", subcontext: "Scary and thrilling", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/ghost_film_reel_icon.png?alt=media&token=404111b7-c3f1-47f5-adae-39b5daadf5c3" },
+            { text: "SCI-FI", subcontext: "Futuristic adventures", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/futuristic_spaceship_icon.png?alt=media&token=b9a3f22c-2eaa-4def-bb4c-bace5fe9a0ea" },
+        ],
+    },
+    {
+        question: "What type of sports are you interested in?",
+        condition: "SPORTS",
+        options: [
+            { text: "FOOTBALL", subcontext: "The beautiful game", icon: "football_goalpost_icon" },
+            { text: "BASKETBALL", subcontext: "Hoops and dunks", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/basketball_hoop_icon.png?alt=media&token=51fc9b37-0b27-494a-ab6e-af235fd012be" },
+            { text: "CRICKET", subcontext: "Bat and ball action", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/cricket_bat_ball_icon.png?alt=media&token=bd262d89-8bd3-4567-aa92-f2f4a3284384" },
+            { text: "TENNIS", subcontext: "Racket sports", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/tennis_racket_ball_icon.png?alt=media&token=44e8c2f7-9d75-4926-97af-51fc2d89fb76" },
+            { text: "OTHER", subcontext: "Various sports", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/various_sports_equipment_icon.png?alt=media&token=4c1168ef-8879-445c-9319-a9ae637c9a38" },
+        ],
+    },
+    {
+        question: "When do you plan to attend?",
+        options: [
+            { text: "This week", subcontext: "Within the next 7 days", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/current_week_calendar_icon.png?alt=media&token=af772381-7d09-45aa-be18-d2782568d4c4" },
+            { text: "This month", subcontext: "Within the current month", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/current_month_calendar_icon.png?alt=media&token=7ec1cfb2-6ec3-496e-86da-87ee084ab2c9" },
+            { text: "Within 3 months", subcontext: "In the next 3 months", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/three_months_calendar_icon.png?alt=media&token=876346bb-d3e3-4674-9d87-911fa913cf9d" },
+            { text: "No specific time", subcontext: "Anytime", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/clock_question_mark_icon.png?alt=media&token=00c666fc-5657-450f-b680-5aeadd241a33" },
+        ],
+    },
+];
+export const dummyMovies = [
+    {
+      _id: "1",
+      event_type: "movie",
+      title: "The Grand Adventure",
+      rating: 8.2,
+      votes: "4,567",
+      duration: "2h 15m",
+      releaseDate: "2024-07-25",
+      genres: ["Action", "Adventure"],
+      languages: ["English", "French"],
+      formats: ["IMAX", "3D"],
+      imgSrc: "https://example.com/images/grand_adventure.jpg",
+      bgImage: "https://example.com/images/grand_adventure_bg.jpg",
+      description: "An epic adventure of a group of friends exploring uncharted territories.",
+      cast: ["John Doe", "Jane Smith"],
+      crew: ["Director: Alice Johnson", "Producer: Bob Brown"],
+      showtimes: {
+        "Waterloo": [
+          {
+            theater: "Cineplex Waterloo",
+            availability: [
+              { seating_plan: { seating_plan_id: "sp1", booked_seats: [3, 4] }, time: "18:00" },
+              { seating_plan: { seating_plan_id: "sp2", booked_seats: [12, 14] }, time: "20:00" }
+            ]
+          }
+        ]
+      },
+      pricing: {
+        "IMAX": 15.99,
+        "3D": 13.99
+      },
+      tickets: [],
+      userReviews: [
+        { user: "Alice", comment: "Amazing movie!", rating: 9 },
+        { user: "Bob", comment: "Really enjoyed it!", rating: 8 }
+      ]
+    },
+    {
+      _id: "2",
+      event_type: "movie",
+      title: "Romantic Escape",
+      rating: 7.4,
+      votes: "2,345",
+      duration: "1h 45m",
+      releaseDate: "2024-08-10",
+      genres: ["Romance", "Drama"],
+      languages: ["English"],
+      formats: ["2D"],
+      imgSrc: "https://example.com/images/romantic_escape.jpg",
+      bgImage: "https://example.com/images/romantic_escape_bg.jpg",
+      description: "A heartwarming tale of love and destiny.",
+      cast: ["Emily Stone", "Michael Brown"],
+      crew: ["Director: Sarah Green", "Producer: Tom White"],
+      showtimes: {
+        "Waterloo": [
+          {
+            theater: "Galaxy Cinemas",
+            availability: [
+              { seating_plan: { seating_plan_id: "sp3", booked_seats: [1, 2, 5] }, time: "17:00" },
+              { seating_plan: { seating_plan_id: "sp4", booked_seats: [7, 8] }, time: "19:30" }
+            ]
+          }
+        ]
+      },
+      pricing: {
+        "2D": 10.99
+      },
+      tickets: [],
+      userReviews: [
+        { user: "Charlie", comment: "Beautiful story.", rating: 7 },
+        { user: "Dave", comment: "Very touching.", rating: 8 }
+      ]
+    }
+  ];
+  

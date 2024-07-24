@@ -1,9 +1,8 @@
 .not-found-page {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
   }
-  
+
   .not-found-content {
     flex: 1;
     display: flex;

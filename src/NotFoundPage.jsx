@@ -16,7 +16,6 @@ const NotFoundPage = () => {
           <button onClick={() => window.location.reload()} className="not-found-button try-again-button">TRY AGAIN</button>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

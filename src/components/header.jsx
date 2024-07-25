@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -14,7 +15,7 @@ import { auth } from '../firebase.js';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CitySelector from './CitySelector.jsx';
 import './header.css';
-import logo from "../icons/logobg.png"
+import logo from "../icons/logobg.png";
 import TabHeader from './TabHeader.jsx';
 
 const Search = styled('div')(({ theme }) => ({
@@ -67,13 +68,15 @@ const CityButton = styled(Button)(({ theme }) => ({
     },
 }));
 
-function Header({ isLoggedIn }) {
+function Header({ isLoggedIn,onadmin }) {
+    
     const [open, setOpen] = useState(false);
     const [user, setUser] = useState(null);
     const [anchorEl, setAnchorEl] = useState(null);
     const [citySelectorOpen, setCitySelectorOpen] = useState(false);
     const [selectedCity, setSelectedCity] = useState('Toronto');
     const openMenu = Boolean(anchorEl);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const userId = sessionStorage.getItem('userId');
@@ -82,11 +85,10 @@ function Header({ isLoggedIn }) {
         }
         if (isLoggedIn) {
             if (!userId) {
-                setOpen(true)
+                setOpen(true);
             }
         }
-
-    }, [user]);
+    }, [user, isLoggedIn]);
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -114,78 +116,85 @@ function Header({ isLoggedIn }) {
         handleCitySelectorClose();
     };
 
+    const handleProfileClick = () => {
+        navigate('/profile');
+        handleMenuClose();
+    };
+
     return (
         <>
-        <AppBar position="static" className="header-appbar">
-            <Toolbar className="header-toolbar">
-                <a href="/">
-                    <div className="header-logo">
-                        <Typography variant="h2" noWrap component="div">
-                            <img src={logo} alt="Logo" />
-                        </Typography>
-
+            <AppBar position="static" className="header-appbar">
+                <Toolbar className="header-toolbar">
+                    <a href="/">
+                        <div className="header-logo">
+                            <Typography variant="h2" noWrap component="div">
+                                <img src={logo} alt="Logo" />
+                            </Typography>
+                        </div>
+                    </a>
+                    {!onadmin &&
+                    <div className="header-search">
+                        <Search className="search">
+                            <SearchIconWrapper className="search-icon-wrapper">
+                                <SearchIcon />
+                            </SearchIconWrapper>
+                            <StyledInputBase
+                                placeholder="Search for Movies, Events, Plays, Sports and Activities"
+                                inputProps={{ 'aria-label': 'search' }}
+                                className="styled-input-base"
+                            />
+                        </Search>
                     </div>
-                </a>
-                <div className="header-search">
-                    <Search className="search">
-                        <SearchIconWrapper className="search-icon-wrapper">
-                            <SearchIcon />
-                        </SearchIconWrapper>
-                        <StyledInputBase
-                            placeholder="Search for Movies, Events, Plays, Sports and Activities"
-                            inputProps={{ 'aria-label': 'search' }}
-                            className="styled-input-base"
-                        />
-                    </Search>
-                </div>
-                <div className="headerRightSection">
-                    <Button onClick={handleCitySelectorOpen}  className="cityButton">
-                        {selectedCity}
-                    </Button>
-                    <div className="header-actions">
-                        {user ? (
-                            <>
-                                <IconButton color="inherit" onClick={handleMenu}>
-                                    <AccountCircleIcon className="header-menu-icon" />
-                                </IconButton>
-                                <Menu
-                                    anchorEl={anchorEl}
-                                    open={openMenu}
-                                    onClose={handleMenuClose}
-                                    anchorOrigin={{
-                                        vertical: 'top',
-                                        horizontal: 'right',
-                                    }}
-                                    transformOrigin={{
-                                        vertical: 'top',
-                                        horizontal: 'right',
-                                    }}
+                    }
+                    <div className="headerRightSection">
+                        <Button onClick={handleCitySelectorOpen} className="cityButton">
+                            {selectedCity}
+                        </Button>
+                        <div className="header-actions">
+                            {user ? (
+                                <>
+                                    <IconButton color="inherit" onClick={handleMenu}>
+                                        <AccountCircleIcon className="header-menu-icon" />
+                                    </IconButton>
+                                    <Menu
+                                        anchorEl={anchorEl}
+                                        open={openMenu}
+                                        onClose={handleMenuClose}
+                                        anchorOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'right',
+                                        }}
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'right',
+                                        }}
+                                    >
+                                        <MenuItem onClick={handleProfileClick}>User Profile</MenuItem>
+                                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                                    </Menu>
+                                </>
+                            ) : (
+                                <Button
+                                    variant="contained"
+                                    className="header-signin-button"
+                                    onClick={handleOpen}
                                 >
-                                    <MenuItem onClick={handleMenuClose}>User Profile</MenuItem>
-                                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                                </Menu>
-                            </>
-                        ) : (
-                            <Button
-                                variant="contained"
-                                className="header-signin-button"
-                                onClick={handleOpen}
-                            >
-                                Sign In
-                            </Button>
-                        )}
+                                    Sign In
+                                </Button>
+                            )}
+                        </div>
                     </div>
-                </div>
-            </Toolbar>
-            <AuthModal open={open} handleClose={handleClose} showClose={isLoggedIn} />
-            <CitySelector
-                open={citySelectorOpen}
-                onClose={handleCitySelectorClose}
-                onSelectCity={handleCitySelect}
-                selectedCity={selectedCity}
-            />
-        </AppBar>
-        <TabHeader/>
+                </Toolbar>
+                <AuthModal open={open} handleClose={handleClose} showClose={isLoggedIn} />
+                <CitySelector
+                    open={citySelectorOpen}
+                    onClose={handleCitySelectorClose}
+                    onSelectCity={handleCitySelect}
+                    selectedCity={selectedCity}
+                />
+            </AppBar>
+            {!onadmin &&
+            <TabHeader />}
         </>
     );
 }

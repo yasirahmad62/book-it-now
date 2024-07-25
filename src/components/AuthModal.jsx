@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Box, Button, TextField, Typography, IconButton, CircularProgress, Alert } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { auth, googleProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword } from '../firebase';
+import { getDatabase, ref, set } from 'firebase/database';
 import './AuthModal.css';
 
 const style = {
@@ -32,12 +33,28 @@ export default function AuthModal({ open, handleClose, showClose }) {
         setSuccess('');
     };
 
+    const createProfileInFirebase = async (userId) => {
+        const db = getDatabase();
+        const userProfileRef = ref(db, 'profiles/' + userId);
+        const initialProfileData = {
+            fullName: '',
+            email: email,
+            mobileNumber: '',
+            location: '',
+            timestamp: new Date().toISOString(),
+            userType: 'user'
+        };
+        await set(userProfileRef, initialProfileData);
+        sessionStorage.setItem('userType', initialProfileData.userType);
+    };
+
     const handleGoogleSignIn = async () => {
         setLoading(true);
         setError('');
         try {
             const result = await signInWithPopup(auth, googleProvider);
             sessionStorage.setItem('userId', result.user.uid);
+            await createProfileInFirebase(result.user.uid);
             setSuccess('Successfully signed in with Google');
             resetForm();
             handleClose();
@@ -76,6 +93,7 @@ export default function AuthModal({ open, handleClose, showClose }) {
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             sessionStorage.setItem('userId', userCredential.user.uid);
+            await createProfileInFirebase(userCredential.user.uid);
             setSuccess('Successfully signed up');
             resetForm();
             handleClose();

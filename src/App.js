@@ -11,6 +11,11 @@ import ContactUsPage from "./ContactUsPage";
 import BookingPage from "./BookingPage";
 import CheckoutPage from "./CheckoutPage";
 import NotFoundPage from "./NotFoundPage";
+import Dashboard from "./admin/Dashboard";
+import EventManagementPage from "./admin/EventManagementPage";
+import UserPage from "./admin/UserPage";
+import UserProfilePage from "./UserProfilePage";
+import RolesPage from "./admin/Roles";
 
 function App() {
   return (
@@ -40,6 +45,11 @@ function App() {
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/notfound" element={<NotFoundPage />} />
             <Route path="/cancel" element={<NotFoundPage />} />
+            <Route path="/admin" element={<Dashboard />} />
+            <Route path="/admin/edit" element={<EventManagementPage />} />
+            <Route path="/admin/user" element={<UserPage />} />
+            <Route path="/admin/roles" element={<RolesPage />} />
+            <Route path="/profile" element={<UserProfilePage />} /> 
           </Routes>
         </div>
       </Router>

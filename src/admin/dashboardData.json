@@ -1,0 +1,192 @@
+{
+    "dashboard": {
+      "eventStatistics": {
+        "totalEvents": 120,
+        "eventsPerCategory": [
+          { "category": "movies", "count": 50 },
+          { "category": "sports", "count": 30 },
+          { "category": "events", "count": 40 }
+        ],
+        "upcomingEvents": [
+          {
+            "id": "event001",
+            "title": "Concert Night",
+            "category": "events",
+            "date": "2024-08-15T19:00:00Z",
+            "location": "City Hall",
+            "status": "upcoming"
+          },
+          {
+            "id": "event002",
+            "title": "Soccer Finals",
+            "category": "sports",
+            "date": "2024-08-20T17:00:00Z",
+            "location": "Stadium",
+            "status": "upcoming"
+          }
+        ]
+      },
+      "bookingStatistics": {
+        "totalBookings": 450,
+        "bookingsPerCategory": [
+          { "category": "movies", "count": 200 },
+          { "category": "sports", "count": 150 },
+          { "category": "events", "count": 100 }
+        ],
+        "recentBookings": [
+          {
+            "bookingId": "booking001",
+            "userId": "user001",
+            "eventId": "event001",
+            "eventTitle": "Concert Night",
+            "category": "events",
+            "date": "2024-07-20T14:00:00Z",
+            "tickets": 2,
+            "amount": 120.00,
+            "status": "confirmed"
+          },
+          {
+            "bookingId": "booking002",
+            "userId": "user002",
+            "eventId": "event002",
+            "eventTitle": "Soccer Finals",
+            "category": "sports",
+            "date": "2024-07-18T18:30:00Z",
+            "tickets": 4,
+            "amount": 200.00,
+            "status": "confirmed"
+          }
+        ],
+        "totalRevenue": 52000.00,
+        "revenuePerCategory": [
+          { "category": "movies", "revenue": 25000.00 },
+          { "category": "sports", "revenue": 17000.00 },
+          { "category": "events", "revenue": 10000.00 }
+        ],
+        "pendingPayments": [
+          {
+            "paymentId": "payment001",
+            "userId": "user003",
+            "eventId": "event003",
+            "eventTitle": "Basketball Match",
+            "amount": 80.00,
+            "status": "pending"
+          }
+        ],
+        "completedPayments": [
+          {
+            "paymentId": "payment002",
+            "userId": "user004",
+            "eventId": "event004",
+            "eventTitle": "Movie Premiere",
+            "amount": 50.00,
+            "status": "completed"
+          }
+        ],
+        "refundsProcessed": [
+          {
+            "refundId": "refund001",
+            "userId": "user005",
+            "eventId": "event005",
+            "eventTitle": "Music Festival",
+            "amount": 70.00,
+            "reason": "Event Cancelled",
+            "status": "processed"
+          }
+        ]
+      },
+      "userStatistics": {
+        "totalUsers": 320,
+        "newUsers": [
+          {
+            "userId": "user006",
+            "name": "John Doe",
+            "email": "john.doe@example.com",
+            "signupDate": "2024-07-01T10:00:00Z"
+          },
+          {
+            "userId": "user007",
+            "name": "Jane Smith",
+            "email": "jane.smith@example.com",
+            "signupDate": "2024-07-02T12:00:00Z"
+          }
+        ],
+        "mostActiveUsers": [
+          {
+            "userId": "user008",
+            "name": "Alice Johnson",
+            "totalBookings": 15
+          },
+          {
+            "userId": "user009",
+            "name": "Bob Brown",
+            "totalBookings": 12
+          }
+        ]
+      },
+      "financialStatistics": {
+        "totalRevenue": 52000.00,
+        "revenueBreakdown": [
+          { "category": "movies", "revenue": 25000.00 },
+          { "category": "sports", "revenue": 17000.00 },
+          { "category": "events", "revenue": 10000.00 }
+        ],
+        "pendingPayments": [
+          {
+            "paymentId": "payment003",
+            "userId": "user010",
+            "eventId": "event006",
+            "amount": 120.00,
+            "status": "pending"
+          }
+        ],
+        "completedPayments": [
+          {
+            "paymentId": "payment004",
+            "userId": "user011",
+            "eventId": "event007",
+            "amount": 50.00,
+            "status": "completed"
+          }
+        ],
+        "refundsProcessed": [
+          {
+            "refundId": "refund002",
+            "userId": "user012",
+            "eventId": "event008",
+            "amount": 100.00,
+            "reason": "Customer Request",
+            "status": "processed"
+          }
+        ]
+      },
+      "keyMetrics": {
+        "totalUsers": 320,
+        "totalSales": 52000.00,
+        "activeUsers": 250,
+        "refundsProcessed": 170.00
+      },
+      "latestEvents": [
+        { "name": "Concert Night", "date": "Jul 26, 2024" },
+        { "name": "Soccer Finals", "date": "Jul 26, 2024" },
+        { "name": "Theater Play", "date": "Jul 26, 2024" },
+        { "name": "Stand-up Comedy", "date": "Jul 26, 2024" },
+        { "name": "Food Festival", "date": "Jul 26, 2024" }
+      ],
+      "latestBookings": [
+        { "bookingId": "BOOK-007", "customer": "Ekaterina Tankova", "date": "Jul 24, 2024", "status": "Pending" },
+        { "bookingId": "BOOK-006", "customer": "Cao Yu", "date": "Jul 23, 2024", "status": "Confirmed" },
+        { "bookingId": "BOOK-004", "customer": "Alexa Richardson", "date": "Jul 22, 2024", "status": "Refunded" },
+        { "bookingId": "BOOK-003", "customer": "Anje Keizer", "date": "Jul 21, 2024", "status": "Pending" },
+        { "bookingId": "BOOK-002", "customer": "Clarke Gillebert", "date": "Jul 20, 2024", "status": "Confirmed" },
+        { "bookingId": "BOOK-001", "customer": "Adam Denisov", "date": "Jul 19, 2024", "status": "Confirmed" }
+      ],
+      "trafficByPlatform": {
+        "facebook": "323.23k",
+        "google": "341.21k",
+        "linkedin": "411.21k",
+        "twitter": "443.23k"
+      }
+    }
+  }
+  

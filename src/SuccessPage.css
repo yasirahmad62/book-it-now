@@ -1,0 +1,30 @@
+.success-page {
+  text-align: center;
+  padding: 20px;
+}
+
+.success-content {
+  margin-top: 50px;
+}
+
+.booking-details {
+  margin: 20px 0;
+  text-align: left;
+}
+
+.success-buttons {
+  margin-top: 20px;
+}
+
+.success-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.success-button:hover {
+  background-color: #45a049;
+}

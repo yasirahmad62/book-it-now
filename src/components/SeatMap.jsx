@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { setSeats } from '../store/bookingSlice';
 import "./SeatMap.css";
 import CheckoutButton from "./CheckoutButton";
 import Handicap from "../icons/Handicap";
 
-const SeatMap = ({ onSelectSeats,pricing}) => {
+const SeatMap = ({ onSelectSeats, pricing, eventDetails }) => {
   const dispatch = useDispatch();
   const ticketPrice = 2400; // Example price in cents
   const convenienceFee = 340; // Example fee in cents
@@ -14,13 +13,13 @@ const SeatMap = ({ onSelectSeats,pricing}) => {
     seating_plan_id: "xyz1234566",
     booked_seats: [0, 1, 2, 5, 19, 20, 23, 120, 39],
   };
-  
+
   const groups = [
     { price: 25, rows: ['A', 'B'] },
     { price: 24, rows: ['C', 'D', 'E', 'F', 'G'] },
     { price: 21, rows: ['H', 'I', 'J', 'K', 'L', 'M'] },
   ];
-  
+
   const rowSeats = {
     'A': 10,
     'B': 12,
@@ -74,7 +73,6 @@ const SeatMap = ({ onSelectSeats,pricing}) => {
     return seats;
   };
 
-
   let seatIndex = 0;
   return (
     <div className="seat-map">
@@ -106,6 +104,7 @@ const SeatMap = ({ onSelectSeats,pricing}) => {
         selectedSeats={selectedSeats}
         ticketPrice={ticketPrice}
         convenienceFee={convenienceFee}
+        eventDetails={eventDetails}
       />
     </div>
   );

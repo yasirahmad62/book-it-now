@@ -5,7 +5,7 @@ import "./Faq.css"
 
 const stripePromise = loadStripe('pk_test_51Pfv0NA2iC3BEjckeRInDm8u5Wj1KJCOGYobCmnXC9pBRZjwjNaNJK5PrOKNeZJlZFhjoT4z28rFE1lSS9B3ZMwV00INt9Rvgp'); // Replace with your Stripe public key
 
-const CheckoutButton = ({ selectedSeats, ticketPrice, convenienceFee }) => {
+const CheckoutButton = ({ selectedSeats, ticketPrice, convenienceFee, eventDetails }) => {
   const handleCheckout = async () => {
     const stripe = await stripePromise;
 
@@ -13,6 +13,7 @@ const CheckoutButton = ({ selectedSeats, ticketPrice, convenienceFee }) => {
       selectedSeats,
       ticketPrice,
       convenienceFee,
+      eventDetails
     });
 
     const sessionId = response.data.id;

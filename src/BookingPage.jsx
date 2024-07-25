@@ -23,6 +23,7 @@ const BookingPage = () => {
   const [movieDetails, setMovieDetailsState] = useState(null);
   const storedCity = sessionStorage.getItem('selectedCity');
   const { id } = useParams();
+
   useEffect(() => {
     if (storedCity) {
       setCity(storedCity);
@@ -102,7 +103,9 @@ const BookingPage = () => {
   }, [selectedTime, dispatch]);
 
   const finalSelectedDateTime = getFinalSelectedDateTime();
-
+  console.log(finalSelectedDateTime)
+  const formattedDate = finalSelectedDateTime;
+console.log(formattedDate,'dd')
   return (
     <div className="bookingContainer">
       <Header isLoggedIn={checkforUser} />
@@ -129,10 +132,19 @@ const BookingPage = () => {
         <ShowtimesList showtimes={showtimes} onTimeSelect={handleTimeSelect} />
       </div>
       <Footer />
-
+{movieDetails && 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <SeatMap onSelectSeats={(seats) => dispatch(setSeats(seats))} pricing={showtimes} />
+        <SeatMap 
+          onSelectSeats={(seats) => dispatch(setSeats(seats))} 
+          pricing={showtimes} 
+          eventDetails={{
+            name: movieDetails.title,
+            date: formattedDate,
+            city: city
+          }}
+        />
       </Modal>
+}
     </div>
   );
 };

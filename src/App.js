@@ -16,6 +16,7 @@ import EventManagementPage from "./admin/EventManagementPage";
 import UserPage from "./admin/UserPage";
 import UserProfilePage from "./UserProfilePage";
 import RolesPage from "./admin/Roles";
+import SuccessPage from "./SuccessPage";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
             <Route path="/admin/edit" element={<EventManagementPage />} />
             <Route path="/admin/user" element={<UserPage />} />
             <Route path="/admin/roles" element={<RolesPage />} />
+            <Route path="/success" element={<SuccessPage />} />
             <Route path="/profile" element={<UserProfilePage />} /> 
           </Routes>
         </div>

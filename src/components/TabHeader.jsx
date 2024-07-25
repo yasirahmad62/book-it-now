@@ -35,7 +35,7 @@ const TabHeader = () => {
           className={`rating-category h`}
           onClick={() => setIsModalOpen(true)}
         >
-          Show me what to watch
+          Find Your Perfect Event
         </a>
       </div>
       <RecommendationModal isOpen={isModalOpen} onRequestClose={handleCloseModal} />

@@ -410,7 +410,7 @@ export const filterOptions = {
         question: "What type of sports are you interested in?",
         condition: "SPORTS",
         options: [
-            { text: "FOOTBALL", subcontext: "The beautiful game", icon: "football_goalpost_icon" },
+            { text: "FOOTBALL", subcontext: "The beautiful game", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/trophy_icon.png?alt=media&token=0537ecde-9f7a-4b75-918a-047805b217a8" },
             { text: "BASKETBALL", subcontext: "Hoops and dunks", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/basketball_hoop_icon.png?alt=media&token=51fc9b37-0b27-494a-ab6e-af235fd012be" },
             { text: "CRICKET", subcontext: "Bat and ball action", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/cricket_bat_ball_icon.png?alt=media&token=bd262d89-8bd3-4567-aa92-f2f4a3284384" },
             { text: "TENNIS", subcontext: "Racket sports", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/tennis_racket_ball_icon.png?alt=media&token=44e8c2f7-9d75-4926-97af-51fc2d89fb76" },
@@ -420,9 +420,9 @@ export const filterOptions = {
     {
         question: "When do you plan to attend?",
         options: [
-            { text: "This week", subcontext: "Within the next 7 days", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/current_week_calendar_icon.png?alt=media&token=af772381-7d09-45aa-be18-d2782568d4c4" },
+            { text: "This week", subcontext: "Within the next 7 days", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/current_month_calendar_icon.png?alt=media&token=7ec1cfb2-6ec3-496e-86da-87ee084ab2c9" },
             { text: "This month", subcontext: "Within the current month", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/current_month_calendar_icon.png?alt=media&token=7ec1cfb2-6ec3-496e-86da-87ee084ab2c9" },
-            { text: "Within 3 months", subcontext: "In the next 3 months", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/three_months_calendar_icon.png?alt=media&token=876346bb-d3e3-4674-9d87-911fa913cf9d" },
+            { text: "Within 3 months", subcontext: "In the next 3 months", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/current_month_calendar_icon.png?alt=media&token=7ec1cfb2-6ec3-496e-86da-87ee084ab2c9" },
             { text: "No specific time", subcontext: "Anytime", icon: "https://firebasestorage.googleapis.com/v0/b/bookitnow-1959f.appspot.com/o/clock_question_mark_icon.png?alt=media&token=00c666fc-5657-450f-b680-5aeadd241a33" },
         ],
     },

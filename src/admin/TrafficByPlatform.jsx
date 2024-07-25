@@ -5,10 +5,10 @@ import { Facebook, Google, LinkedIn, Twitter } from '@mui/icons-material';
 
 const TrafficByPlatform = ({ data }) => {
     const platforms = [
-        { name: 'Facebook', count: data.facebook, icon: <Facebook style={{ color: '#3b5998' }} /> },
-        { name: 'Google', count: data.google, icon: <Google style={{ color: '#db4437' }} /> },
-        { name: 'LinkedIn', count: data.linkedin, icon: <LinkedIn style={{ color: '#0077b5' }} /> },
-        { name: 'Twitter', count: data.twitter, icon: <Twitter style={{ color: '#1da1f2' }} /> },
+        { name: 'Facebook', count: "3.2K", icon: <Facebook style={{ color: '#3b5998' }} /> },
+        { name: 'Google', count: "2.0k", icon: <Google style={{ color: '#db4437' }} /> },
+        { name: 'LinkedIn', count: "1.2k", icon: <LinkedIn style={{ color: '#0077b5' }} /> },
+        { name: 'Twitter', count: "3.1k", icon: <Twitter style={{ color: '#1da1f2' }} /> },
     ];
 
     return (

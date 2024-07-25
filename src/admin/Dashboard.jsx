@@ -10,7 +10,7 @@ import TrafficSourceChart from './TrafficSourceChart';
 import KeyMetrics from './KeyMetrics';
 import LatestEvents from './LatestEvent';
 import LatestBookings from './LatestBooking';
-import dashboardData from './dashboardData.json'; // Assuming the JSON data is saved in a file
+import dashboardData from './dashboardData.json'; 
 import TrafficByPlatform from './TrafficByPlatform';
 import Header from '../components/header';
 
@@ -54,6 +54,7 @@ const Dashboard = () => {
             <Grid item xs={12} md={6} lg={8}>
               <LatestBookings data={latestBookings} />
             </Grid>
+
             <Grid item xs={12} md={6} lg={3}>
               <EventStatistics data={eventStatistics} />
             </Grid>
@@ -67,6 +68,7 @@ const Dashboard = () => {
               <FinancialStatistics data={financialStatistics} />
             </Grid>
           </Grid>
+          <TrafficByPlatform/>
         </Container>
       </Box>
     </Box>

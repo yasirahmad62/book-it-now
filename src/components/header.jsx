@@ -68,13 +68,14 @@ const CityButton = styled(Button)(({ theme }) => ({
     },
 }));
 
-function Header({ isLoggedIn,onadmin }) {
-    
+function Header({ isLoggedIn, onadmin }) {
     const [open, setOpen] = useState(false);
     const [user, setUser] = useState(null);
     const [anchorEl, setAnchorEl] = useState(null);
     const [citySelectorOpen, setCitySelectorOpen] = useState(false);
     const [selectedCity, setSelectedCity] = useState('Toronto');
+    const [recentSearches, setRecentSearches] = useState([]);
+    const [showDropdown, setShowDropdown] = useState(false);
     const openMenu = Boolean(anchorEl);
     const navigate = useNavigate();
 
@@ -88,6 +89,10 @@ function Header({ isLoggedIn,onadmin }) {
                 setOpen(true);
             }
         }
+
+        // Retrieve recent searches from session storage
+        const searches = JSON.parse(sessionStorage.getItem('recentSearches')) || [];
+        setRecentSearches(searches);
     }, [user, isLoggedIn]);
 
     const handleOpen = () => setOpen(true);
@@ -121,6 +126,42 @@ function Header({ isLoggedIn,onadmin }) {
         handleMenuClose();
     };
 
+    const handleSearch = (searchTerm) => {
+        // Call OMDB API with the search term
+        fetch(`https://www.omdbapi.com/?apikey=5e2f39cc&t=${searchTerm}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.Response === "True") {
+                    // Save the search term to session storage
+                    let updatedSearches = [searchTerm];
+
+                    // Get the current recent searches from session storage
+                    const currentSearches = JSON.parse(sessionStorage.getItem('recentSearches')) || [];
+
+                    // Check if the search term is already in the recent searches
+                    if (!currentSearches.includes(searchTerm)) {
+                        updatedSearches = [searchTerm, ...currentSearches.slice(0, 1)];
+                    }
+
+                    // Update the session storage with the new recent searches (max 2)
+                    sessionStorage.setItem('recentSearches', JSON.stringify(updatedSearches));
+
+                    // Update the state with the new recent searches
+                    setRecentSearches(updatedSearches);
+                    setShowDropdown(false);
+
+                    // Navigate to the directory page with the imdbID
+                    navigate(`/movie/${data.imdbID}`);
+                } else {
+                    console.error("Movie not found!");
+                }
+            });
+    };
+
+    const handleRecentSearchClick = (searchTerm) => {
+        handleSearch(searchTerm);
+    };
+
     return (
         <>
             <AppBar position="static" className="header-appbar">
@@ -133,18 +174,42 @@ function Header({ isLoggedIn,onadmin }) {
                         </div>
                     </a>
                     {!onadmin &&
-                    <div className="header-search">
-                        <Search className="search">
-                            <SearchIconWrapper className="search-icon-wrapper">
-                                <SearchIcon />
-                            </SearchIconWrapper>
-                            <StyledInputBase
-                                placeholder="Search for Movies, Events, Plays, Sports and Activities"
-                                inputProps={{ 'aria-label': 'search' }}
-                                className="styled-input-base"
-                            />
-                        </Search>
-                    </div>
+                        <div className="header-search">
+                            <Search className="search">
+                                <SearchIconWrapper className="search-icon-wrapper">
+                                    <SearchIcon />
+                                </SearchIconWrapper>
+                                <StyledInputBase
+                                    placeholder="Search for Movie"
+                                    inputProps={{ 'aria-label': 'search' }}
+                                    className="styled-input-base"
+                                    onFocus={() => setShowDropdown(true)}
+                                    onBlur={() => setTimeout(() => setShowDropdown(false), 200)}
+                                    onKeyPress={(e) => {
+                                        if (e.key === 'Enter') {
+                                            handleSearch(e.target.value);
+                                        }
+                                    }}
+                                />
+                                {showDropdown && (
+                                    <div className="search-dropdown">
+                                        <div className="recent-searches">
+                                            <Typography variant="subtitle1">Recent Searches</Typography>
+                                            <ul>
+                                                {recentSearches.map((search, index) => (
+                                                    <li key={index} onClick={() => handleRecentSearchClick(search)}>
+                                                        <span className="search-icon">
+                                                            <SearchIcon />
+                                                        </span>
+                                                        {search}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                )}
+                            </Search>
+                        </div>
                     }
                     <div className="headerRightSection">
                         <Button onClick={handleCitySelectorOpen} className="cityButton">
@@ -194,7 +259,7 @@ function Header({ isLoggedIn,onadmin }) {
                 />
             </AppBar>
             {!onadmin &&
-            <TabHeader />}
+                <TabHeader />}
         </>
     );
 }

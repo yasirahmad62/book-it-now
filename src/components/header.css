@@ -127,3 +127,40 @@
         font-size: 0.75rem;
     }
 }
+
+.search-dropdown {
+    position: absolute;
+    background-color: #fff;
+    color: #000;
+    width: 100%;
+    top: 50px; /* Position it just below the search bar */
+    z-index: 1000;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+}
+
+.recent-searches, .popular-searches {
+    margin-bottom: 10px;
+}
+
+.recent-searches ul, .popular-searches ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recent-searches li, .popular-searches li {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    cursor: pointer;
+}
+
+.search-icon {
+    margin-right: 10px;
+}
+
+.search-icon svg {
+    vertical-align: middle;
+}

@@ -8,7 +8,7 @@ import RatingsSection from './components/RatingsSection';
 import axios from 'axios';
 import { premier, section } from './const/const';
 
-const DetailPage = ({type}) => {
+const DetailPage = ({ type }) => {
   const navigate = useNavigate();
   const { id } = useParams(); // Retrieve the movie ID from the URL
   const [movieDetails, setMovieDetails] = useState(null);
@@ -24,8 +24,45 @@ const DetailPage = ({type}) => {
       }
     };
 
-    fetchMovieDetails();
-  }, [id]);
+    const fetchMovieDetailsFromOMDB = async () => {
+      try {
+        const response = await axios.get(`https://www.omdbapi.com/?apikey=5e2f39cc&i=${id}`);
+        const omdbData = response.data;
+        // Transform OMDB data to match the structure of your existing movie details
+        const transformedData = {
+          title: omdbData.Title,
+          bgImage: omdbData.Poster,
+          imgSrc: omdbData.Poster,
+          rating: omdbData.imdbRating,
+          votes: omdbData.imdbVotes,
+          formats: [], // OMDB doesn't provide format info, leave this empty or use a default value
+          languages: [omdbData.Language],
+          duration: omdbData.Runtime,
+          genres: omdbData.Genre.split(', '),
+          releaseDate: omdbData.Released,
+          description: omdbData.Plot,
+          cast: omdbData.Actors.split(', ').map(actor => ({ name: actor, role: 'Actor' })),
+          crew: [
+            { name: omdbData.Director, role: 'Director' },
+            { name: omdbData.Writer, role: 'Writer' }
+          ],
+          userReviews: omdbData.Ratings.map(rating => ({
+            source: rating.Source,
+            value: rating.Value,
+          })),
+        };
+        setMovieDetails(transformedData);
+      } catch (error) {
+        console.error('Error fetching movie details from OMDB:', error);
+      }
+    };
+
+    if (type === 'omdb') {
+      fetchMovieDetailsFromOMDB();
+    } else {
+      fetchMovieDetails();
+    }
+  }, [id, type]);
 
   if (!movieDetails) {
     return <div>Loading...</div>;
@@ -50,12 +87,16 @@ const DetailPage = ({type}) => {
             </div>
             <div className="additional-info">
               <div className="formats">
-                {movieDetails.formats.map((format, index) => (
-                  <React.Fragment key={index}>
-                    <a href="#">{format}</a>
-                    {index < movieDetails.formats.length - 1 && <span>, </span>}
-                  </React.Fragment>
-                ))}
+                {movieDetails.formats.length > 0 ? (
+                  movieDetails.formats.map((format, index) => (
+                    <React.Fragment key={index}>
+                      <a href="#">{format}</a>
+                      {index < movieDetails.formats.length - 1 && <span>, </span>}
+                    </React.Fragment>
+                  ))
+                ) : (
+                  <span>No format information available</span>
+                )}
               </div>
               <div className="languages">
                 {movieDetails.languages.map((language, index) => (
@@ -95,33 +136,33 @@ const DetailPage = ({type}) => {
           <hr />
         </div>
         <div className="detailPage-cast-crew-section">
-  <div className="detailPage-section">
-    <h2 className="detailPage-section-title">Cast</h2>
-    <div className="detailPage-section-content">
-      {movieDetails.cast.map((castMember, index) => (
-        <div key={index} className="detailPage-card">
-          <div className="detailPage-card-content">
-            <strong>{castMember.name}</strong>
-            <p>{castMember.role}</p>
+          <div className="detailPage-section">
+            <h2 className="detailPage-section-title">Cast</h2>
+            <div className="detailPage-section-content">
+              {movieDetails.cast.map((castMember, index) => (
+                <div key={index} className="detailPage-card">
+                  <div className="detailPage-card-content">
+                    <strong>{castMember.name}</strong>
+                    <p>{castMember.role}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="detailPage-section">
+            <h2 className="detailPage-section-title">Crew</h2>
+            <div className="detailPage-section-content">
+              {movieDetails.crew.map((crewMember, index) => (
+                <div key={index} className="detailPage-card">
+                  <div className="detailPage-card-content">
+                    <strong>{crewMember.name}</strong>
+                    <p>{crewMember.role}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-  <div className="detailPage-section">
-    <h2 className="detailPage-section-title">Crew</h2>
-    <div className="detailPage-section-content">
-      {movieDetails.crew.map((crewMember, index) => (
-        <div key={index} className="detailPage-card">
-          <div className="detailPage-card-content">
-            <strong>{crewMember.name}</strong>
-            <p>{crewMember.role}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</div>
 
         <div>
           <span className="event-description__EventDescriptionContainer-sc-o4g232-1 gHdeCC">

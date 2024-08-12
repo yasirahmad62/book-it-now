@@ -17,6 +17,7 @@ import UserPage from "./admin/UserPage";
 import UserProfilePage from "./UserProfilePage";
 import RolesPage from "./admin/Roles";
 import SuccessPage from "./SuccessPage";
+import Directory from "./Directory";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
             <Route path="/admin/roles" element={<RolesPage />} />
             <Route path="/success" element={<SuccessPage />} />
             <Route path="/profile" element={<UserProfilePage />} /> 
+            <Route path="/movie/:imdbID" element={<Directory />} />
           </Routes>
         </div>
       </Router>

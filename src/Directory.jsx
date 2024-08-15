@@ -28,7 +28,9 @@ const Directory = () => {
 
   const handleAddToFavourites = () => {
     if (movieDetails) {
-      sessionStorage.setItem('favouriteMovie', JSON.stringify({
+      const favourites = JSON.parse(sessionStorage.getItem('favouriteMovies')) || [];
+      const newFavourite = {
+        imdbID: imdbID,
         title: movieDetails.Title,
         poster: movieDetails.Poster,
         rating: movieDetails.imdbRating,
@@ -38,7 +40,10 @@ const Directory = () => {
         runtime: movieDetails.Runtime,
         genre: movieDetails.Genre,
         released: movieDetails.Released
-      }));
+      };
+
+      const updatedFavourites = [...favourites, newFavourite];
+      sessionStorage.setItem('favouriteMovies', JSON.stringify(updatedFavourites));
       alert(`${movieDetails.Title} has been added to your favourites!`);
     }
   };

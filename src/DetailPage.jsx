@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from './components/header';
 import HeroCarousel from './components/HeroCarousel';
@@ -10,8 +10,11 @@ import { premier, section } from './const/const';
 
 const DetailPage = ({ type }) => {
   const navigate = useNavigate();
-  const { id } = useParams(); // Retrieve the movie ID from the URL
+  const { id } = useParams(); 
   const [movieDetails, setMovieDetails] = useState(null);
+  const [email, setEmail] = useState('');
+  const [reminderSet, setReminderSet] = useState(false);
+
   const bookingUrl = `/bookings/${id}`;
 
   useEffect(() => {
@@ -28,14 +31,13 @@ const DetailPage = ({ type }) => {
       try {
         const response = await axios.get(`https://www.omdbapi.com/?apikey=5e2f39cc&i=${id}`);
         const omdbData = response.data;
-        // Transform OMDB data to match the structure of your existing movie details
         const transformedData = {
           title: omdbData.Title,
           bgImage: omdbData.Poster,
           imgSrc: omdbData.Poster,
           rating: omdbData.imdbRating,
           votes: omdbData.imdbVotes,
-          formats: [], // OMDB doesn't provide format info, leave this empty or use a default value
+          formats: [],
           languages: [omdbData.Language],
           duration: omdbData.Runtime,
           genres: omdbData.Genre.split(', '),
@@ -63,6 +65,16 @@ const DetailPage = ({ type }) => {
       fetchMovieDetails();
     }
   }, [id, type]);
+
+  const handleSetReminder = async () => {
+    try {
+      await axios.post(`http://localhost:8000/api/reminder`, { email, movieId: id });
+      setReminderSet(true);
+      alert('Reminder set successfully!');
+    } catch (error) {
+      console.error('Error setting reminder:', error);
+    }
+  };
 
   if (!movieDetails) {
     return <div>Loading...</div>;
@@ -122,6 +134,23 @@ const DetailPage = ({ type }) => {
             <a href={bookingUrl}>
               <button className="book-tickets">Book tickets</button>
             </a>
+            <div className="reminder-section netflix-style">
+  <input 
+    type="email" 
+    placeholder="Enter your email for reminders" 
+    value={email} 
+    onChange={(e) => setEmail(e.target.value)} 
+    className="netflix-input"
+    required 
+  />
+  <button 
+    onClick={handleSetReminder} 
+    className="netflix-button" 
+    disabled={reminderSet}
+  >
+    {reminderSet ? 'Reminder Set' : 'Remind Me'}
+  </button>
+</div>
           </div>
         </div>
       </section>

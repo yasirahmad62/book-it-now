@@ -18,6 +18,7 @@ import UserProfilePage from "./UserProfilePage";
 import RolesPage from "./admin/Roles";
 import SuccessPage from "./SuccessPage";
 import Directory from "./Directory";
+import Favourites from "./Favourites";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
             <Route path="/success" element={<SuccessPage />} />
             <Route path="/profile" element={<UserProfilePage />} /> 
             <Route path="/movie/:imdbID" element={<Directory />} />
+            <Route path="/favourites" element={<Favourites />} />
           </Routes>
         </div>
       </Router>

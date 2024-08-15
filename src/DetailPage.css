@@ -235,3 +235,54 @@
     font-size: 12px;
   }
 }
+
+.reminder-section.netflix-style {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.netflix-input {
+  background-color: #141414;
+  border: 1px solid #333;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  flex: 1;
+  margin-right: 10px;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.netflix-input::placeholder {
+  color: #888;
+}
+
+.netflix-input:focus {
+  outline: none;
+  border-color: #e50914;
+}
+
+.netflix-button {
+  background-color: #e50914;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.netflix-button:hover {
+  background-color: #f40612;
+}
+
+.netflix-button:disabled {
+  background-color: #333;
+  cursor: not-allowed;
+}
+
+.netflix-button:disabled:hover {
+  background-color: #333;
+}

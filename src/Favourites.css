@@ -1,0 +1,87 @@
+.favourites-container {
+    padding: 20px;
+  }
+  
+  .favourites-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .favourites-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .favourite-card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 15px;
+    padding: 10px;
+    width: 220px;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+  
+  .favourite-poster {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .favourite-details {
+    width: 100%;
+  }
+  
+  .favourite-details h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #333;
+  }
+  
+  .favourite-details p {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+  }
+  
+  .remove-favourite {
+    background-color: #ff0051;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 0.9em;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .remove-favourite:hover {
+    background-color: #e60046;
+  }
+  
+  .likes-section {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+  }
+  
+  .likes-icon {
+    font-size: 1.2em;
+    color: green;
+    margin-right: 5px;
+  }
+  
+  .likes-count {
+    font-size: 0.9em;
+    color: #333;
+  }
+  

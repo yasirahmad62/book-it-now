@@ -164,3 +164,9 @@
 .search-icon svg {
     vertical-align: middle;
 }
+.header-actions{
+    gap: 18px;
+}
+.header-actions button svg {
+    fill: #000;
+}

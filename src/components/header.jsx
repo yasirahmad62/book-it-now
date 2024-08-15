@@ -13,6 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AuthModal from './AuthModal.jsx';
 import { auth } from '../firebase.js';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { FaHeart } from 'react-icons/fa';  // Import the FaHeart icon from react-icons
 import CitySelector from './CitySelector.jsx';
 import './header.css';
 import logo from "../icons/logobg.png";
@@ -162,6 +163,10 @@ function Header({ isLoggedIn, onadmin }) {
         handleSearch(searchTerm);
     };
 
+    const handleFavouritesClick = () => {
+        navigate('/favourites');
+    };
+
     return (
         <>
             <AppBar position="static" className="header-appbar">
@@ -216,6 +221,9 @@ function Header({ isLoggedIn, onadmin }) {
                             {selectedCity}
                         </Button>
                         <div className="header-actions">
+                            <IconButton color="inherit" onClick={handleFavouritesClick}>
+                                <FaHeart className="favourites-icon" />
+                            </IconButton>
                             {user ? (
                                 <>
                                     <IconButton color="inherit" onClick={handleMenu}>

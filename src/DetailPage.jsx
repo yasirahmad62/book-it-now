@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from './components/header';
 import HeroCarousel from './components/HeroCarousel';
@@ -12,7 +12,6 @@ const DetailPage = ({ type }) => {
   const navigate = useNavigate();
   const { id } = useParams(); 
   const [movieDetails, setMovieDetails] = useState(null);
-  const [email, setEmail] = useState('');
   const [reminderSet, setReminderSet] = useState(false);
 
   const bookingUrl = `/bookings/${id}`;
@@ -59,6 +58,12 @@ const DetailPage = ({ type }) => {
       }
     };
 
+    // Check if the user has already set a reminder for this movie
+    const storedReminder = localStorage.getItem(`reminder_${id}`);
+    if (storedReminder) {
+      setReminderSet(true);
+    }
+
     if (type === 'omdb') {
       fetchMovieDetailsFromOMDB();
     } else {
@@ -66,14 +71,11 @@ const DetailPage = ({ type }) => {
     }
   }, [id, type]);
 
-  const handleSetReminder = async () => {
-    try {
-      await axios.post(`http://localhost:8000/api/reminder`, { email, movieId: id });
-      setReminderSet(true);
-      alert('Reminder set successfully!');
-    } catch (error) {
-      console.error('Error setting reminder:', error);
-    }
+  const handleSetReminder = () => {
+    // Save reminder to localStorage
+    localStorage.setItem(`reminder_${id}`, true);
+    setReminderSet(true);
+    alert('Reminder set! You will be reminded next time you visit this page.');
   };
 
   if (!movieDetails) {
@@ -135,22 +137,14 @@ const DetailPage = ({ type }) => {
               <button className="book-tickets">Book tickets</button>
             </a>
             <div className="reminder-section netflix-style">
-  <input 
-    type="email" 
-    placeholder="Enter your email for reminders" 
-    value={email} 
-    onChange={(e) => setEmail(e.target.value)} 
-    className="netflix-input"
-    required 
-  />
-  <button 
-    onClick={handleSetReminder} 
-    className="netflix-button" 
-    disabled={reminderSet}
-  >
-    {reminderSet ? 'Reminder Set' : 'Remind Me'}
-  </button>
-</div>
+              <button 
+                onClick={handleSetReminder} 
+                className="netflix-button" 
+                disabled={reminderSet}
+              >
+                {reminderSet ? 'Reminder Set' : 'Remind Me'}
+              </button>
+            </div>
           </div>
         </div>
       </section>

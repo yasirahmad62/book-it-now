@@ -12,6 +12,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import AuthModal from './AuthModal.jsx';
 import { auth } from '../firebase.js';
+import { alpha } from '@mui/material/styles';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { FaHeart } from 'react-icons/fa';  // Import the FaHeart icon from react-icons
 import CitySelector from './CitySelector.jsx';
@@ -22,18 +23,20 @@ import TabHeader from './TabHeader.jsx';
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: "#f2f2f2",
-    fontFamily: "Work Sans",
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    '&:hover': {
+      backgroundColor: alpha(theme.palette.common.white, 0.25),
+    },
     marginRight: theme.spacing(2),
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(3),
-        width: 'auto',
+      marginLeft: theme.spacing(3),
+      width: 'auto',
     },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
+  }));
+  
+  const SearchIconWrapper = styled('div')(({ theme }) => ({
     padding: theme.spacing(0, 2),
     height: '100%',
     position: 'absolute',
@@ -41,24 +44,24 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontFamily: "Work Sans",
-    color: '#757575',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: '#000000',
+    color: '#ffffff',
+  }));
+  
+  const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    color: 'inherit',
+    fontFamily: 'Netflix Sans, Arial, sans-serif',
     '& .MuiInputBase-input': {
-        padding: theme.spacing(1, 1, 1, 0),
-        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-        transition: theme.transitions.create('width'),
-        fontFamily: "Work Sans",
-        width: '100%',
-        [theme.breakpoints.up('md')]: {
-            width: '20ch',
-        },
+      padding: theme.spacing(1, 1, 1, 0),
+      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+      transition: theme.transitions.create('width'),
+      width: '100%',
+      fontSize: '1rem',
+      [theme.breakpoints.up('md')]: {
+        width: '30ch',
+      },
     },
-}));
-
+  }));
+  
 const CityButton = styled(Button)(({ theme }) => ({
     fontFamily: "Work Sans",
     textTransform: 'none',
@@ -181,9 +184,12 @@ function Header({ isLoggedIn, onadmin }) {
                     {!onadmin &&
                         <div className="header-search">
                             <Search className="search">
-                                <SearchIconWrapper className="search-icon-wrapper">
-                                    <SearchIcon />
-                                </SearchIconWrapper>
+                            <SearchIconWrapper>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="11" cy="11" r="8" stroke="#ffffff" strokeWidth="2"/>
+          <line x1="16" y1="16" x2="21" y2="21" stroke="#ffffff" strokeWidth="2"/>
+        </svg>
+      </SearchIconWrapper>
                                 <StyledInputBase
                                     placeholder="Search for Movie"
                                     inputProps={{ 'aria-label': 'search' }}

@@ -13,7 +13,8 @@ import { NoResultsFoundIcon } from './icons/Icons';
 const EventListingPage = ({ type }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const city = sessionStorage.getItem('selectedCity');
+  const city = sessionStorage.getItem('selectedCity') || 'Toronto';
+
   const [selectedFilters, setSelectedFilters] = useState({});
   const [events, setEvents] = useState([]);
   const recommendations = useSelector((state) => state.booking.recommendations);
@@ -98,7 +99,7 @@ const EventListingPage = ({ type }) => {
         )}
         <div className="event-listing">
           {!isRecommendation &&
-            <h2>{events.length} {capitalizeFirstLetter(type)} results in {sessionStorage.getItem('selectedCity')}</h2>
+            <h2>{events.length} {capitalizeFirstLetter(type)} results in {city}</h2>
           }
           {isRecommendation && <h3>Recommended based on your preferences</h3>}
           {!isRecommendation &&
